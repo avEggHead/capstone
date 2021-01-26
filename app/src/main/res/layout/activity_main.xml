@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/current_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/weight_label"/>
+
+    <TextView
+        android:id="@+id/weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/current_weight"
+        android:layout_centerHorizontal="true"
+        android:textSize="50sp"
+        android:text="185.89 lbs"
+        />
+
+    <ImageView
+        android:id="@+id/double_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/weight"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/double_line"
+        />
+
+    <ImageView
+        android:id="@+id/enter_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/double_line"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/enter_weight"
+        android:onClick="goToEnterWeight"
+        />
+
+
+</RelativeLayout>
