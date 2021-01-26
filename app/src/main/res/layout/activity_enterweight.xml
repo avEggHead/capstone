@@ -21,7 +21,11 @@
         android:layout_below="@+id/enter_weight_heading"
         android:layout_centerHorizontal="true"
         android:textSize="50sp"
-        android:text="185.11 lbs"
+        android:textStyle="bold"
+        android:textColor="@color/teal_700"
+        android:fontFamily="@font/my_custom_font"
+        android:text="185.11"
+        android:inputType="numberDecimal"
         />
 
     <ImageView
