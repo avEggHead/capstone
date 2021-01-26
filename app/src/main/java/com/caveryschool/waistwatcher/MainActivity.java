@@ -19,4 +19,10 @@ public class MainActivity extends AppCompatActivity {
         Intent enterWeightScreen = new Intent(this,EnterWeightActivity.class);
         this.startActivity(enterWeightScreen);
     }
+
+    public void goToViewHistory(View view) {
+    }
+
+    public void goToSettings(View view) {
+    }
 }
