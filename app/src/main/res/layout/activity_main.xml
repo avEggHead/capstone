@@ -21,6 +21,7 @@
         android:layout_below="@id/current_weight"
         android:layout_centerHorizontal="true"
         android:textSize="50sp"
+        android:fontFamily="@font/my_custom_font"
         android:text="185.89 lbs"
         />
 
