@@ -5,8 +5,7 @@ public class Weight {
     private float Weight;
     private int CreatedOnDate;
 
-    public Weight(int ID, float weight, int createdOnDate) {
-        this.ID = ID;
+    public Weight(float weight, int createdOnDate) {
         Weight = weight;
         CreatedOnDate = createdOnDate;
     }

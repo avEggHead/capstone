@@ -35,6 +35,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/input_weight"
         android:src="@drawable/submit_button"
+        android:onClick="submitWeight"
         />
 
     <ImageView

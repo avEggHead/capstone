@@ -48,4 +48,14 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
         return weights;
     }
+
+    public void insert(Weight weight){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sqlInsert = "insert into " + TABLE_WEIGHTS;
+        sqlInsert += " values( null, " + weight.getWeight();
+        sqlInsert += ", " + weight.getCreatedOnDate();
+
+        db.execSQL(sqlInsert);
+        db.close();
+    }
 }
