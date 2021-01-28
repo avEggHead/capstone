@@ -22,8 +22,8 @@ public class DatabaseManager extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sqlCreate = "create table " + TABLE_WEIGHTS + "( " + ID;
-        sqlCreate += " integer primary key autoincrememnt" + WEIGHT;
-        sqlCreate += " real, " + CREATED_ON_DATE + " integer )";
+        sqlCreate += " integer primary key autoincrement, " + WEIGHT;
+        sqlCreate += " real, " + CREATED_ON_DATE + " real )";
 
         db.execSQL(sqlCreate);
     }
@@ -42,7 +42,8 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
         ArrayList<Weight> weights = new ArrayList<Weight>();
         while(cursor.moveToNext()){
-            Weight weight = new Weight(cursor.getInt(0), cursor.getFloat(1), cursor.getInt(2));
+            Weight weight = new Weight(cursor.getFloat(1), cursor.getInt(2));
+            weight.setID(cursor.getInt(0));
             weights.add(weight);
         }
 
@@ -53,7 +54,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         String sqlInsert = "insert into " + TABLE_WEIGHTS;
         sqlInsert += " values( null, " + weight.getWeight();
-        sqlInsert += ", " + weight.getCreatedOnDate();
+        sqlInsert += ", " + weight.getCreatedOnDate() + " )";
 
         db.execSQL(sqlInsert);
         db.close();

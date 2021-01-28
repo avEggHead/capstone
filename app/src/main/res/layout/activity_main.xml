@@ -24,7 +24,7 @@
         android:textStyle="bold"
         android:textColor="@color/teal_700"
         android:fontFamily="@font/my_custom_font"
-        android:text="185.89 lbs"
+        android:text="185.89"
         />
 
     <ImageView

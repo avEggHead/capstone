@@ -3,9 +3,9 @@ package com.caveryschool.waistwatcher;
 public class Weight {
     private int ID;
     private float Weight;
-    private int CreatedOnDate;
+    private float CreatedOnDate;
 
-    public Weight(float weight, int createdOnDate) {
+    public Weight(float weight, float createdOnDate) {
         Weight = weight;
         CreatedOnDate = createdOnDate;
     }
@@ -26,7 +26,7 @@ public class Weight {
         Weight = weight;
     }
 
-    public int getCreatedOnDate() {
+    public float getCreatedOnDate() {
         return CreatedOnDate;
     }
 

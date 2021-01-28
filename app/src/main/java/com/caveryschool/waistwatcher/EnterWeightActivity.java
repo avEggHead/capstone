@@ -1,11 +1,14 @@
 package com.caveryschool.waistwatcher;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.time.Instant;
 import java.util.Date;
 
 public class EnterWeightActivity extends AppCompatActivity {
@@ -22,6 +25,7 @@ public class EnterWeightActivity extends AppCompatActivity {
         this.finish();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void submitWeight(View view) {
         // get the value from the edit text box
         EditText weightField = findViewById(R.id.input_weight);
@@ -29,10 +33,12 @@ public class EnterWeightActivity extends AppCompatActivity {
         Float weightValue = Float.parseFloat(unParsedWeight);
 
         Date date = new Date();
-
+        String dateStamp = String.valueOf(date.toInstant()).substring(0,10).replace("-", "");
+        String instantStamp = String.valueOf(date.toInstant()).substring(11,19).replace(":","");
+        String timestamp = dateStamp + instantStamp;
 
         // create the weight object
-        Weight weight = new Weight(weightValue, 20210128);
+        Weight weight = new Weight(weightValue, Float.parseFloat(timestamp));
 
         // insert it into the database
         this._databaseManager.insert(weight);
