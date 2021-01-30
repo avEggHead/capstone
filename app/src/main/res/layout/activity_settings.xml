@@ -14,11 +14,46 @@
         android:src="@drawable/settings_heading" />
 
     <ImageView
+        android:id="@+id/goal_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="false"
+        android:layout_below="@id/settings_screen_heading"
+        android:src="@drawable/goal_label">
+    </ImageView>
+
+    <ImageView
+        android:id="@+id/goal_input_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="false"
+        android:layout_below="@id/settings_screen_heading"
+        android:layout_toRightOf="@id/goal_label"
+        android:src="@drawable/goal_input_box">
+
+    </ImageView>
+
+    <EditText
+        android:layout_width="132dp"
+        android:layout_height="58dp"
+        android:layout_below="@id/settings_screen_heading"
+        android:layout_marginLeft="23dp"
+        android:layout_marginTop="22dp"
+        android:layout_toRightOf="@id/goal_label"
+        android:fontFamily="@font/my_custom_font"
+        android:text="175.00"
+        android:textColor="@color/teal_700"
+        android:textSize="30sp"
+        android:background="@null"
+        android:inputType="numberDecimal"
+        android:textStyle="bold"></EditText>
+
+    <ImageView
         android:id="@+id/submit_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/settings_screen_heading"
+        android:layout_below="@id/goal_label"
         android:src="@drawable/submit_button"
         />
 

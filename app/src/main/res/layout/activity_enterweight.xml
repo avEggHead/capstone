@@ -25,6 +25,7 @@
         android:textColor="@color/teal_700"
         android:fontFamily="@font/my_custom_font"
         android:text="185.11"
+        android:background="@null"
         android:inputType="numberDecimal"
         />
 
