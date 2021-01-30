@@ -4,6 +4,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,12 +36,15 @@ public class EnterWeightActivity extends AppCompatActivity {
         Date date = new Date();
         String dateStamp = String.valueOf(date.toInstant()).substring(0,10).replace("-", "");
         String instantStamp = String.valueOf(date.toInstant()).substring(11,19).replace(":","");
-        String timestamp = dateStamp + instantStamp;
 
         // create the weight object
-        Weight weight = new Weight(weightValue, Float.parseFloat(timestamp));
+        Weight weight = new Weight(weightValue, Integer.parseInt(dateStamp));
 
         // insert it into the database
         this._databaseManager.insert(weight);
+    }
+
+    public void tempDelete(View view) {
+        this._databaseManager.clearTheDatabase();
     }
 }

@@ -45,6 +45,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/submit_button"
         android:src="@drawable/cancel_button"
+        android:onClick="tempDelete"
         />
 
     <ImageView

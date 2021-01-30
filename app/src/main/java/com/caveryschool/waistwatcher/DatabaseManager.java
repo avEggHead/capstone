@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseManager extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "WeightTracker";
@@ -14,6 +15,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     private static final String ID = "id";
     private static final String WEIGHT = "weight";
     private static final String CREATED_ON_DATE = "created_on_date";
+    private static final String CREATED_ON_TIME = "created_on_time";
 
     public DatabaseManager(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -23,7 +25,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String sqlCreate = "create table " + TABLE_WEIGHTS + "( " + ID;
         sqlCreate += " integer primary key autoincrement, " + WEIGHT;
-        sqlCreate += " real, " + CREATED_ON_DATE + " real )";
+        sqlCreate += " real, " + CREATED_ON_DATE + " real, " + CREATED_ON_TIME +" real )";
 
         db.execSQL(sqlCreate);
     }
@@ -34,16 +36,21 @@ public class DatabaseManager extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public ArrayList<Weight> selectAll(){
+    public void clearTheDatabase(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_WEIGHTS, "1", null);
+    }
+
+    public List<Weight> selectAll(){
         String sqlQuery = "select * from " + TABLE_WEIGHTS;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(sqlQuery, null);
 
-        ArrayList<Weight> weights = new ArrayList<Weight>();
+        List<Weight> weights = new ArrayList<Weight>();
         while(cursor.moveToNext()){
             Weight weight = new Weight(cursor.getFloat(1), cursor.getInt(2));
-            weight.setID(cursor.getInt(0));
+                    weight.setID(cursor.getInt(0));
             weights.add(weight);
         }
 

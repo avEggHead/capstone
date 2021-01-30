@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -31,13 +32,16 @@ public class MainActivity extends AppCompatActivity {
     private void setField() {
         // Get the current weight field
         TextView currentWeightField = (TextView) findViewById(R.id.weight);
-
         // get the weight from the db
-        ArrayList<Weight> weights = this._databaseManager.selectAll();
+        List<Weight> weights = this._databaseManager.selectAll();
         String outputValue = "";
         if(!weights.isEmpty()){
-            weights.sort(Comparator.comparing(Weight::getCreatedOnDate));
-            Weight currentWeight = weights.get(0);
+            Weight currentWeight = new Weight(0, 0);
+            for (int i=0; i < weights.size(); i++) {
+                if(weights.get(i).getID() > currentWeight.getID()) {
+                     currentWeight = weights.get(i);
+                }
+            }
             outputValue = String.valueOf(currentWeight.getWeight());
         }
 
