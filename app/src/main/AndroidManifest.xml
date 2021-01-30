@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".EnterWeightActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".SettingsActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

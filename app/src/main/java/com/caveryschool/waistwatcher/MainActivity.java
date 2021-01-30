@@ -54,9 +54,11 @@ public class MainActivity extends AppCompatActivity {
         this.startActivity(enterWeightScreen);
     }
 
-    public void goToViewHistory(View view) {
+    public void goToSettings(View view){
+        Intent settingsScreen = new Intent(this,SettingsActivity.class);
+        this.startActivity(settingsScreen);
     }
 
-    public void goToSettings(View view) {
+    public void goToViewHistory(View view) {
     }
 }
