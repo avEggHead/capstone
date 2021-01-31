@@ -8,6 +8,8 @@ import android.webkit.WebView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+// I might use this for data display in the future.
+
 public class HistoryActivity extends AppCompatActivity {
     private DatabaseManager _databaseManager;
 
@@ -20,7 +22,7 @@ public class HistoryActivity extends AppCompatActivity {
             "\n" +
             "<h2>History</h2>\n" +
             "\n" +
-            "<button onclick=\"myFunction()\" >Go Back</button>\n" +
+            "<img onclick=\"myFunction()\" >Go Back</img>\n" +
             "\n" +
             "<script>\n" +
             "function myFunction (){\n" +
