@@ -47,7 +47,7 @@ public class EnterWeightActivity extends AppCompatActivity {
         Weight weight = new Weight(weightValue, Integer.parseInt(dateStamp), Integer.parseInt(instantStamp));
 
         // insert it into the database
-        this._databaseManager.insert(weight);
+        this._databaseManager.insertWeight(weight);
     }
 
     public void tempDelete(View view) {
