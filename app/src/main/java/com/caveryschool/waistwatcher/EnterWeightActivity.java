@@ -48,6 +48,8 @@ public class EnterWeightActivity extends AppCompatActivity {
 
         // insert it into the database
         this._databaseManager.insertWeight(weight);
+
+        this.finish();
     }
 
     public void tempDelete(View view) {

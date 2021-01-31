@@ -46,7 +46,6 @@
         android:textColor="@color/teal_700"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:text="@string/_155_25"
         android:autofillHints="enter goal weight" />
 
     <ImageView
@@ -59,6 +58,16 @@
         android:src="@drawable/by_date_label" />
 
     <ImageView
+        android:id="@+id/by_date_field"
+        android:layout_width="205dp"
+        android:layout_height="68dp"
+        android:layout_below="@id/goal_label"
+        android:layout_marginLeft="9dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/by_label"
+        android:src="@drawable/by_date_field" />
+
+    <ImageView
         android:id="@+id/gender_label"
         android:layout_width="185dp"
         android:layout_height="64dp"
@@ -67,19 +76,40 @@
         android:src="@drawable/gender_label" />
 
     <ImageView
+        android:id="@+id/gender_field"
+        android:layout_width="205dp"
+        android:layout_height="68dp"
+        android:layout_below="@id/by_label"
+        android:layout_marginLeft="9dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/gender_label"
+        android:src="@drawable/gender_selection" />
+
+    <ImageView
         android:id="@+id/height_label"
         android:layout_width="189dp"
         android:layout_height="70dp"
+        android:layout_marginTop="30dp"
         android:layout_below="@id/gender_label"
         android:layout_centerHorizontal="false"
         android:src="@drawable/height_label" />
+
+    <ImageView
+        android:id="@+id/height_field"
+        android:layout_width="169dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/gender_label"
+        android:layout_marginLeft="9dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/height_label"
+        android:src="@drawable/height_field" />
 
     <ImageView
         android:id="@+id/submit_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/height_label"
+        android:layout_below="@id/height_field"
         android:src="@drawable/submit_button"
         />
 
