@@ -22,7 +22,7 @@
                 android:contentDescription="@string/the_history_label_at_the_top_of_the_screen" />
 
             <ImageView
-                android:id="@+id/temp"
+                android:id="@+id/weight_data_holder"
                 android:layout_width="wrap_content"
                 android:layout_height="600dp"
                 android:layout_below="@id/history_screen_heading"
@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_below="@id/temp"
+                android:layout_below="@id/weight_data_holder"
                 android:src="@drawable/submit_button"
                 />
 
