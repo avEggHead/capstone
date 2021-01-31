@@ -22,6 +22,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".HistoryActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".HistoryClassicActivity"
+            android:screenOrientation="portrait"/>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 

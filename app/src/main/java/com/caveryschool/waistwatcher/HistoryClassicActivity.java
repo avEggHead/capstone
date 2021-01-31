@@ -1,6 +1,7 @@
 package com.caveryschool.waistwatcher;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +11,10 @@ public class HistoryClassicActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_historyclassic);
         this._databaseManager = new DatabaseManager(this);
+    }
+
+    public void goBack(View view) { this.finish();
     }
 }
