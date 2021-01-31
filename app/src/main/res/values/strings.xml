@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">WaistWatcher</string>
+    <string name="settings_label_at_the_top_of_the_screen">settings label at the top of the screen</string>
+    <string name="goal_label_text">goal label text</string>
+    <string name="the_goal_weight_input_box">the goal weight input box</string>
+    <string name="_155_25">155.25</string>
 </resources>

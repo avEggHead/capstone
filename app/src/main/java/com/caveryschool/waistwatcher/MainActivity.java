@@ -60,5 +60,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToViewHistory(View view) {
+        Intent history = new Intent(this,HistoryActivity.class);
+        this.startActivity(history);
     }
 }

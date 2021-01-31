@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -11,7 +10,8 @@
         android:layout_width="255dp"
         android:layout_height="49dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/settings_heading" />
+        android:src="@drawable/settings_heading"
+        android:contentDescription="@string/settings_label_at_the_top_of_the_screen" />
 
     <ImageView
         android:id="@+id/goal_label"
@@ -19,8 +19,9 @@
         android:layout_height="65dp"
         android:layout_below="@id/settings_screen_heading"
         android:layout_centerHorizontal="false"
-        android:layout_marginLeft="31dp"
-        android:src="@drawable/goal_label"></ImageView>
+        android:layout_marginStart="31dp"
+        android:src="@drawable/goal_label"
+        android:contentDescription="@string/goal_label_text" />
 
     <ImageView
         android:id="@+id/goal_input_box"
@@ -28,23 +29,25 @@
         android:layout_height="71dp"
         android:layout_below="@id/settings_screen_heading"
         android:layout_centerHorizontal="false"
-        android:layout_toRightOf="@id/goal_label"
-        android:src="@drawable/goal_input_box"></ImageView>
+        android:layout_toEndOf="@id/goal_label"
+        android:src="@drawable/goal_input_box"
+        android:contentDescription="@string/the_goal_weight_input_box" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_below="@id/settings_screen_heading"
-        android:layout_marginLeft="31dp"
+        android:layout_marginStart="31dp"
         android:layout_marginTop="13dp"
-        android:layout_toRightOf="@id/goal_label"
+        android:layout_toEndOf="@id/goal_label"
         android:background="@null"
         android:fontFamily="@font/my_custom_font"
         android:inputType="numberDecimal"
-        android:text="175.00"
         android:textColor="@color/teal_700"
         android:textSize="30sp"
-        android:textStyle="bold"></EditText>
+        android:textStyle="bold"
+        android:text="@string/_155_25"
+        android:autofillHints="enter goal weight" />
 
     <ImageView
         android:id="@+id/by_label"
@@ -52,8 +55,8 @@
         android:layout_height="79dp"
         android:layout_below="@id/goal_label"
         android:layout_marginTop="7dp"
-        android:layout_marginLeft="50dp"
-        android:src="@drawable/by_date_label"></ImageView>
+        android:layout_marginStart="50dp"
+        android:src="@drawable/by_date_label" />
 
     <ImageView
         android:id="@+id/gender_label"
@@ -61,7 +64,7 @@
         android:layout_height="64dp"
         android:layout_below="@id/by_label"
         android:layout_centerHorizontal="false"
-        android:src="@drawable/gender_label"></ImageView>
+        android:src="@drawable/gender_label" />
 
     <ImageView
         android:id="@+id/height_label"
@@ -69,7 +72,7 @@
         android:layout_height="70dp"
         android:layout_below="@id/gender_label"
         android:layout_centerHorizontal="false"
-        android:src="@drawable/height_label"></ImageView>
+        android:src="@drawable/height_label" />
 
     <ImageView
         android:id="@+id/submit_button"
