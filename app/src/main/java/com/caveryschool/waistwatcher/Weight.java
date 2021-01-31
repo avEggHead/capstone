@@ -14,9 +14,10 @@ public class Weight {
         CreatedOnTime = createdOnTime;
     }
 
-    public Weight(float weight, int createdOnDate) {
+    public Weight(float weight, int createdOnDate, int createdOnTime) {
         Weight = weight;
         CreatedOnDate = createdOnDate;
+        CreatedOnTime = createdOnTime;
     }
 
     public int getID() {

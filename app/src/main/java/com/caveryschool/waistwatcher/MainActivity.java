@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         List<Weight> weights = this._databaseManager.selectAll();
         String outputValue = "";
         if(!weights.isEmpty()){
-            Weight currentWeight = new Weight(0, 0);
+            Weight currentWeight = new Weight(0, 0, 0);
             for (int i=0; i < weights.size(); i++) {
                 if(weights.get(i).getID() > currentWeight.getID()) {
                      currentWeight = weights.get(i);

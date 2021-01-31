@@ -14,17 +14,26 @@
 
         android:src="@drawable/enter_weight_heading" />
 
-    <EditText
-        android:id="@+id/input_weight"
+    <ImageView
+        android:id="@+id/weight_input_box"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/enter_weight_heading"
+        android:src="@drawable/goal_input_box"
+        />
+
+    <EditText
+        android:id="@+id/input_weight"
+        android:layout_marginTop="15dp"
+        android:layout_width="165dp"
+        android:layout_height="75dp"
         android:layout_below="@+id/enter_weight_heading"
         android:layout_centerHorizontal="true"
         android:textSize="50sp"
         android:textStyle="bold"
         android:textColor="@color/teal_700"
         android:fontFamily="@font/my_custom_font"
-        android:text="185.11"
         android:background="@null"
         android:inputType="numberDecimal"
         />
@@ -34,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/input_weight"
+        android:layout_below="@id/weight_input_box"
         android:src="@drawable/submit_button"
         android:onClick="submitWeight"
         />
