@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
+    android:layout_height="wrap_content"
+    android:id="@+id/history_screen">
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -21,37 +22,19 @@
                 android:src="@drawable/history_heading"
                 android:contentDescription="@string/the_history_label_at_the_top_of_the_screen" />
 
-            <ImageView
-                android:id="@+id/weight_data_holder"
-                android:layout_width="wrap_content"
-                android:layout_height="600dp"
-                android:layout_below="@id/history_screen_heading"
-                android:contentDescription="@string/the_history_label_at_the_top_of_the_screen"
-                android:src="@drawable/history_heading" />
+        <RelativeLayout
+            android:id="@+id/history_table"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/history_screen_heading"
+            tools:context=".HistoryClassicActivity"/>
 
-            <ImageView
-                android:id="@+id/submit_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/weight_data_holder"
-                android:src="@drawable/submit_button"
-                />
-
-            <ImageView
-                android:id="@+id/cancel_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/submit_button"
-                android:src="@drawable/cancel_button"
-                />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="goBack"
-                android:layout_below="@id/submit_button"
+                android:layout_below="@id/history_table"
                 android:src="@drawable/go_back" />
 
         </RelativeLayout>
