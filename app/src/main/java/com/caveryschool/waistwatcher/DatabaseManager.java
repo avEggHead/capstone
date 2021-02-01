@@ -30,17 +30,17 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sqlCreate1 = "create table " + TABLE_WEIGHTS + "( " + ID;
-        sqlCreate1 += " integer primary key autoincrement, " + WEIGHT;
-        sqlCreate1 += " real, " + CREATED_ON_DATE + " real, " + CREATED_ON_TIME +" real )";
+        String sqlCreateWeightsTable = "create table " + TABLE_WEIGHTS + "( " + ID;
+        sqlCreateWeightsTable += " integer primary key autoincrement, " + WEIGHT;
+        sqlCreateWeightsTable += " real, " + CREATED_ON_DATE + " real, " + CREATED_ON_TIME +" real )";
         
-        String sqlCreate2 = "create table " + TABLE_SETTINGS + "( " + ID;
-        sqlCreate2 += " integer primary key autoincrement, " + GOAL_WEIGHT;
-        sqlCreate2 += " real, " + GOAL_DATE + " real, " + GENDER +" text,";
-        sqlCreate2 += " real, " + HEIGHT_IN_FEET + " integer, " + HEIGHT_IN_INCHES +" integer )";
+        String sqlCreateSettingsTable = "create table " + TABLE_SETTINGS + "( " + ID;
+        sqlCreateSettingsTable += " integer primary key autoincrement, " + GOAL_WEIGHT;
+        sqlCreateSettingsTable += " real, " + GOAL_DATE + " real, " + GENDER +" text,";
+        sqlCreateSettingsTable += " real, " + HEIGHT_IN_FEET + " integer, " + HEIGHT_IN_INCHES +" integer )";
 
-        db.execSQL(sqlCreate1);
-        db.execSQL(sqlCreate2);
+        db.execSQL(sqlCreateWeightsTable);
+        db.execSQL(sqlCreateSettingsTable);
     }
 
     @Override
@@ -93,5 +93,18 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
         db.execSQL(sqlInsert);
         db.close();
+    }
+
+    public PersonalSettings getPersonalSettings() {
+        String sqlQuery = "select * from " + TABLE_SETTINGS;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sqlQuery, null);
+        PersonalSettings personalSettings = new PersonalSettings();
+        personalSettings.setGoalWeight(cursor.getFloat(1));
+        personalSettings.setGoalDate(cursor.getInt(2));
+        personalSettings.setGender(cursor.getString(3).charAt(0));
+
+        return  personalSettings;
     }
 }
