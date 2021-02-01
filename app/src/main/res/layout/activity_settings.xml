@@ -34,19 +34,19 @@
         android:contentDescription="@string/the_goal_weight_input_box" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_below="@id/settings_screen_heading"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="13dp"
-        android:layout_toEndOf="@id/goal_label"
+        android:id="@+id/input_weight"
+        android:layout_width="150dp"
+        android:layout_height="61dp"
+        android:layout_below="@+id/settings_screen_heading"
+        android:layout_marginLeft="-163dp"
+        android:layout_marginTop="-1dp"
+        android:layout_toRightOf="@+id/goal_input_box"
         android:background="@null"
         android:fontFamily="@font/my_custom_font"
         android:inputType="numberDecimal"
         android:textColor="@color/teal_700"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:autofillHints="enter goal weight" />
+        android:textSize="50sp"
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/by_label"
@@ -59,13 +59,28 @@
 
     <ImageView
         android:id="@+id/by_date_field"
-        android:layout_width="205dp"
-        android:layout_height="68dp"
+        android:layout_width="300dp"
+        android:layout_height="79dp"
         android:layout_below="@id/goal_label"
-        android:layout_marginLeft="9dp"
+        android:layout_marginLeft="-29dp"
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@id/by_label"
         android:src="@drawable/by_date_field" />
+
+    <EditText
+        android:id="@+id/input_goal_date"
+        android:layout_width="226dp"
+        android:layout_height="58dp"
+        android:layout_below="@+id/goal_input_box"
+        android:layout_marginLeft="-3dp"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@+id/by_label"
+        android:background="@null"
+        android:fontFamily="@font/my_custom_font"
+        android:inputType="numberDecimal"
+        android:textColor="@color/teal_700"
+        android:textSize="50sp"
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/gender_label"
@@ -110,6 +125,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/height_field"
+        android:onClick="submitPersonalSettings"
         android:src="@drawable/submit_button"
         />
 

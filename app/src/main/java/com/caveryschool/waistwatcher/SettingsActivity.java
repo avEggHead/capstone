@@ -18,6 +18,10 @@ public class SettingsActivity extends AppCompatActivity {
     public void goBack(View view){
         this.finish();
     }
+
+    public void submitPersonalSettings(View view) {
+
+    }
 }
 
 
