@@ -35,7 +35,7 @@
         android:contentDescription="@string/the_goal_weight_input_box" />
 
     <EditText
-        android:id="@+id/input_weight"
+        android:id="@+id/input_goal_weight"
         android:layout_width="150dp"
         android:layout_height="61dp"
         android:layout_below="@+id/settings_screen_heading"
