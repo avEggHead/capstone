@@ -24,8 +24,33 @@ public class SettingsActivity extends AppCompatActivity {
 
     private void setPersonalSettings() {
         PersonalSettings personalSettings = this._databaseManager.getPersonalSettings();
-        EditText goalWeight = (EditText) this._layout.findViewById(R.id.input_goal_weight);
+        setUIFields(personalSettings);
+    }
+
+    private void setUIFields(PersonalSettings personalSettings) {
+        setGoalWeight(personalSettings);
+        setGoalDate(personalSettings);
         setGenderIcon(personalSettings);
+        setHeight(personalSettings);
+    }
+
+    private void setHeight(PersonalSettings personalSettings) {
+        setHeightFeet(personalSettings);
+        setHeightInches(personalSettings);
+    }
+
+    private void setHeightInches(PersonalSettings personalSettings) {
+    }
+
+    private void setHeightFeet(PersonalSettings personalSettings) {
+    }
+
+    private void setGoalDate(PersonalSettings personalSettings) {
+    }
+
+    private void setGoalWeight(PersonalSettings personalSettings) {
+        EditText goalWeight = (EditText) this._layout.findViewById(R.id.input_goal_weight);
+        goalWeight.setText(String.valueOf(personalSettings.getGoalWeight()));
     }
 
     private void setGenderIcon(PersonalSettings personalSettings) {
