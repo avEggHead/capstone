@@ -1,6 +1,7 @@
 package com.caveryschool.waistwatcher;
 
 import android.app.Person;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
 
 public class SettingsActivity extends AppCompatActivity {
     private DatabaseManager _databaseManager;
@@ -60,9 +62,9 @@ public class SettingsActivity extends AppCompatActivity {
         ImageView view = (ImageView) this._layout.findViewById(R.id.gender_field);
 
         if(personalSettings.getGender() == 'M'){
-//            view.setImageDrawable(R.drawable.gender_selection_is_male);
+            view.setImageDrawable(AppCompatResources.getDrawable(this, R.drawable.gender_selection_male));
         } else if(personalSettings.getGender() == 'F'){
-//            view.setImageDrawable(R.drawable.)gender_selection_is_female;
+            view.setImageDrawable(AppCompatResources.getDrawable(this, R.drawable.gender_selection_female));
         }
 
     }

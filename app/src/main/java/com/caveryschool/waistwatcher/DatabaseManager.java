@@ -111,7 +111,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     }
 
     private void setDefaults(PersonalSettings personalSettings) {
-        personalSettings.setGender('M');
+        personalSettings.setGender('F');
         personalSettings.setGoalDate(20220101);
         personalSettings.setGoalWeight((float)185.00);
         personalSettings.setHeightInFeet(5);
