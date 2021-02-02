@@ -46,6 +46,9 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void setGoalDate(PersonalSettings personalSettings) {
+        EditText goalDate = (EditText) this._layout.findViewById(R.id.input_goal_date);
+        String date = String.valueOf(personalSettings.getGoalDate()).substring(2);
+        goalDate.setText(date);
     }
 
     private void setGoalWeight(PersonalSettings personalSettings) {
