@@ -154,13 +154,13 @@
         android:layout_height="59dp"
         android:layout_below="@+id/input_goal_date"
         android:layout_toRightOf="@id/gender_label"
-        android:background="null" />
+        android:background="@android:color/transparent" />
 
     <Button
         android:layout_width="43dp"
         android:layout_height="59dp"
         android:layout_below="@+id/input_goal_date"
         android:layout_toRightOf="@id/gender_label"
-        android:background="null" />
+        android:background="@android:color/transparent" />
 
 </RelativeLayout>
