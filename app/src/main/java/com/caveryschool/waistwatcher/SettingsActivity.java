@@ -19,7 +19,7 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        this._layout = (RelativeLayout) findViewById(R.id.settings_screen);
+        this._layout = findViewById(R.id.settings_screen);
         this._databaseManager = new DatabaseManager(this);
         setPersonalSettings();
     }
@@ -42,24 +42,30 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void setHeightInches(PersonalSettings personalSettings) {
+        EditText heightInInchesField = this._layout.findViewById(R.id.height_in_inches);
+        String heightInInchesValue = String.valueOf(personalSettings.getHeightInInches());
+        heightInInchesField.setText(heightInInchesValue);
     }
 
     private void setHeightFeet(PersonalSettings personalSettings) {
+        EditText heightInFeetField = this._layout.findViewById(R.id.height_in_feet);
+        String heightInFeetValue = String.valueOf(personalSettings.getHeightInFeet());
+        heightInFeetField.setText(heightInFeetValue);
     }
 
     private void setGoalDate(PersonalSettings personalSettings) {
-        EditText goalDate = (EditText) this._layout.findViewById(R.id.input_goal_date);
+        EditText goalDate = this._layout.findViewById(R.id.input_goal_date);
         String date = String.valueOf(personalSettings.getGoalDate()).substring(2);
         goalDate.setText(date);
     }
 
     private void setGoalWeight(PersonalSettings personalSettings) {
-        EditText goalWeight = (EditText) this._layout.findViewById(R.id.input_goal_weight);
+        EditText goalWeight = this._layout.findViewById(R.id.input_goal_weight);
         goalWeight.setText(String.valueOf(personalSettings.getGoalWeight()));
     }
 
     private void setGenderIcon(PersonalSettings personalSettings) {
-        ImageView view = (ImageView) this._layout.findViewById(R.id.gender_field);
+        ImageView view = this._layout.findViewById(R.id.gender_field);
 
         if(personalSettings.getGender() == 'M'){
             view.setImageDrawable(AppCompatResources.getDrawable(this, R.drawable.gender_selection_male));
