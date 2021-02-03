@@ -47,7 +47,8 @@
         android:inputType="numberDecimal"
         android:textColor="@color/teal_700"
         android:textSize="50sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:maxLength="4"/>
 
     <ImageView
         android:id="@+id/by_label"
@@ -80,8 +81,9 @@
         android:fontFamily="@font/my_custom_font"
         android:inputType="numberDecimal"
         android:textColor="@color/teal_700"
-        android:textSize="50sp"
-        android:textStyle="bold" />
+        android:textSize="48sp"
+        android:textStyle="bold"
+        android:maxLength="6"/>
 
     <ImageView
         android:id="@+id/gender_label"
@@ -99,7 +101,8 @@
         android:layout_marginLeft="9dp"
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@id/gender_label"
-        android:src="@drawable/gender_selection" />
+        android:src="@drawable/gender_selection"
+        android:tag=""/>
 
     <ImageView
         android:id="@+id/height_label"
@@ -145,5 +148,19 @@
         android:onClick="goBack"
         android:layout_below="@id/submit_button"
         android:src="@drawable/go_back" />
+
+    <Button
+        android:layout_width="43dp"
+        android:layout_height="59dp"
+        android:layout_below="@+id/input_goal_date"
+        android:layout_toRightOf="@id/gender_label"
+        android:background="null" />
+
+    <Button
+        android:layout_width="43dp"
+        android:layout_height="59dp"
+        android:layout_below="@+id/input_goal_date"
+        android:layout_toRightOf="@id/gender_label"
+        android:background="null" />
 
 </RelativeLayout>
