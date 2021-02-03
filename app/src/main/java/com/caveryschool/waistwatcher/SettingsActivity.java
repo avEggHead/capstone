@@ -80,13 +80,16 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void selectMale(View view) {
-        ImageView genderField = this._layout.findViewById(R.id.gender_field);
-        genderField.setImageDrawable(AppCompatResources.getDrawable(this, R.drawable.gender_selection_male));
+        ImageView genderFieldImage = this._layout.findViewById(R.id.gender_field);
+        genderFieldImage.setImageDrawable(AppCompatResources.getDrawable(this, R.drawable.gender_selection_male));
+        genderFieldImage.setTag("M");
+
     }
 
     public void selectFemale(View view) {
-        ImageView genderField = this._layout.findViewById(R.id.gender_field);
-        genderField.setImageDrawable(AppCompatResources.getDrawable(this, R.drawable.gender_selection_female));
+        ImageView genderFieldImage = this._layout.findViewById(R.id.gender_field);
+        genderFieldImage.setImageDrawable(AppCompatResources.getDrawable(this, R.drawable.gender_selection_female));
+        genderFieldImage.setTag("F");
     }
 
     public void clearAll(View view){
@@ -94,6 +97,12 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void submitPersonalSettings(View view) {
+        // get all the values
+
+        // create the personal settings object
+
+        // insert the object into the database
+
 
     }
 }
