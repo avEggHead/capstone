@@ -151,18 +151,25 @@
         android:src="@drawable/go_back" />
 
     <Button
+        android:id="@+id/male_selected"
         android:layout_width="43dp"
         android:layout_height="59dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="55dp"
         android:layout_below="@+id/input_goal_date"
         android:layout_toRightOf="@id/gender_label"
-        android:background="@android:color/transparent" />
+        android:background="@android:color/transparent"
+        android:onClick="selectMale"/>
 
     <Button
+        android:id="@+id/female_selected"
         android:layout_width="43dp"
         android:layout_height="59dp"
+        android:layout_marginTop="30dp"
         android:layout_below="@+id/input_goal_date"
-        android:layout_toRightOf="@id/gender_label"
-        android:background="@android:color/transparent" />
+        android:layout_toRightOf="@id/male_selected"
+        android:background="@android:color/transparent"
+        android:onClick="selectFemale"/>
 
     <EditText
         android:id="@+id/height_in_feet"

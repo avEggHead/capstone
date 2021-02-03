@@ -79,6 +79,16 @@ public class SettingsActivity extends AppCompatActivity {
         this.finish();
     }
 
+    public void selectMale(View view) {
+        ImageView genderField = this._layout.findViewById(R.id.gender_field);
+        genderField.setImageDrawable(AppCompatResources.getDrawable(this, R.drawable.gender_selection_male));
+    }
+
+    public void selectFemale(View view) {
+        ImageView genderField = this._layout.findViewById(R.id.gender_field);
+        genderField.setImageDrawable(AppCompatResources.getDrawable(this, R.drawable.gender_selection_female));
+    }
+
     public void clearAll(View view){
         setPersonalSettings();
     }
