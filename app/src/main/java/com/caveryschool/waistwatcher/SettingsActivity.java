@@ -79,6 +79,10 @@ public class SettingsActivity extends AppCompatActivity {
         this.finish();
     }
 
+    public void clearAll(View view){
+        setPersonalSettings();
+    }
+
     public void submitPersonalSettings(View view) {
 
     }
