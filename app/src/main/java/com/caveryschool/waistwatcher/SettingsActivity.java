@@ -98,12 +98,22 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void submitPersonalSettings(View view) {
         // get all the values
+        float goalWeight = (float)199.9;
+        int goalDate = 221231;
+        char gender = Character.valueOf('M');
+        int feet = 5;
+        int inches = 10;
 
         // create the personal settings object
+        PersonalSettings personalSettings = new PersonalSettings();
+        personalSettings.setGoalWeight(goalWeight);
+        personalSettings.setGoalDate(goalDate);
+        personalSettings.setGender(gender);
+        personalSettings.setHeightInFeet(feet);
+        personalSettings.setHeightInInches(inches);
 
         // insert the object into the database
-
-
+        this._databaseManager.upsertPersonalSettings(personalSettings);
     }
 }
 

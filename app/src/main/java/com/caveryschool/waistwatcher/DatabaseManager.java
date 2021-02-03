@@ -117,4 +117,30 @@ public class DatabaseManager extends SQLiteOpenHelper {
         personalSettings.setHeightInFeet(5);
         personalSettings.setHeightInInches(9);
     }
+
+    public void upsertPersonalSettings(PersonalSettings newSettings) {
+        // check the database
+        PersonalSettings settingsInDatabase = this.getPersonalSettings();
+
+        // if it's empty insert
+        if(settingsInDatabase.getId() == 0){
+            insertSettings(newSettings);
+        } else{
+            // if it has settings, use the same Id and update
+            updateSettings(settingsInDatabase, newSettings);
+        }
+    }
+
+    private void updateSettings(PersonalSettings settingsInDatabase, PersonalSettings newSettings) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sqlUpdateQuery = "UPDATE " + TABLE_SETTINGS;
+        sqlUpdateQuery += "SET " + GOAL_WEIGHT + " = " + newSettings.getGoalWeight();
+        sqlUpdateQuery += "SET " + GOAL_DATE + " = " + newSettings.getGoalDate();
+        sqlUpdateQuery += "SET " + GENDER + " = " + newSettings.getGender();
+        sqlUpdateQuery += "SET " + HEIGHT_IN_FEET + " = " + newSettings.getHeightInFeet();
+        sqlUpdateQuery += "SET " + HEIGHT_IN_INCHES + " = " + newSettings.getHeightInInches();
+        sqlUpdateQuery += "WHERE " + ID + " = " + settingsInDatabase.getId();
+
+        db.execSQL(sqlUpdateQuery);
+    }
 }
