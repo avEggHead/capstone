@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DatabaseManager extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "WeightTracker";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
     private static final String TABLE_WEIGHTS = "weights";
     private static final String ID = "id";
     private static final String WEIGHT = "weight";
@@ -37,7 +37,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         String sqlCreateSettingsTable = "create table " + TABLE_SETTINGS + "( " + ID;
         sqlCreateSettingsTable += " integer primary key autoincrement, " + GOAL_WEIGHT;
         sqlCreateSettingsTable += " real, " + GOAL_DATE + " real, " + GENDER +" text,";
-        sqlCreateSettingsTable += " real, " + HEIGHT_IN_FEET + " integer, " + HEIGHT_IN_INCHES +" integer )";
+        sqlCreateSettingsTable += HEIGHT_IN_FEET + " integer, " + HEIGHT_IN_INCHES +" integer )";
 
         db.execSQL(sqlCreateWeightsTable);
         db.execSQL(sqlCreateSettingsTable);
@@ -76,8 +76,8 @@ public class DatabaseManager extends SQLiteOpenHelper {
         String sqlInsert = "insert into " + TABLE_SETTINGS;
         sqlInsert += " values( null, " + personalSettings.getGoalWeight();
         sqlInsert += ", " + personalSettings.getGoalDate();
-        sqlInsert += ", " + personalSettings.getGender();
-        sqlInsert += ", " + personalSettings.getHeightInFeet();
+        sqlInsert += ", '" + personalSettings.getGender();
+        sqlInsert += "', " + personalSettings.getHeightInFeet();
         sqlInsert += ", " + personalSettings.getHeightInInches() + " )";
 
         db.execSQL(sqlInsert);
@@ -103,9 +103,14 @@ public class DatabaseManager extends SQLiteOpenHelper {
         PersonalSettings personalSettings = new PersonalSettings();
         setDefaults(personalSettings);
         if (cursor.getCount() > 0){
-            personalSettings.setGoalWeight(cursor.getFloat(1));
-            personalSettings.setGoalDate(cursor.getInt(2));
-            personalSettings.setGender(cursor.getString(3).charAt(0));
+            while (cursor.moveToLast()){
+                personalSettings.setGoalWeight(cursor.getFloat(1));
+                personalSettings.setGoalDate(cursor.getInt(2));
+                personalSettings.setGender(cursor.getString(3).charAt(0));
+                personalSettings.setHeightInFeet(cursor.getInt(4));
+                personalSettings.setHeightInInches(cursor.getInt(5));
+                break;
+            }
         }
         return  personalSettings;
     }
@@ -119,28 +124,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
     }
 
     public void upsertPersonalSettings(PersonalSettings newSettings) {
-        // check the database
-        PersonalSettings settingsInDatabase = this.getPersonalSettings();
-
-        // if it's empty insert
-        if(settingsInDatabase.getId() == 0){
-            insertSettings(newSettings);
-        } else{
-            // if it has settings, use the same Id and update
-            updateSettings(settingsInDatabase, newSettings);
-        }
-    }
-
-    private void updateSettings(PersonalSettings settingsInDatabase, PersonalSettings newSettings) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String sqlUpdateQuery = "UPDATE " + TABLE_SETTINGS;
-        sqlUpdateQuery += "SET " + GOAL_WEIGHT + " = " + newSettings.getGoalWeight();
-        sqlUpdateQuery += "SET " + GOAL_DATE + " = " + newSettings.getGoalDate();
-        sqlUpdateQuery += "SET " + GENDER + " = " + newSettings.getGender();
-        sqlUpdateQuery += "SET " + HEIGHT_IN_FEET + " = " + newSettings.getHeightInFeet();
-        sqlUpdateQuery += "SET " + HEIGHT_IN_INCHES + " = " + newSettings.getHeightInInches();
-        sqlUpdateQuery += "WHERE " + ID + " = " + settingsInDatabase.getId();
-
-        db.execSQL(sqlUpdateQuery);
+        insertSettings(newSettings);
     }
 }
