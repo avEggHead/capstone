@@ -52,6 +52,12 @@ public class EnterWeightActivity extends AppCompatActivity {
         this.finish();
     }
 
+    public void clearAll(View view){
+
+        EditText weightField = findViewById(R.id.input_weight);
+        weightField.setText("");
+    }
+
     public void tempDelete(View view) {
         this._databaseManager.clearTheDatabase();
     }
