@@ -1,7 +1,11 @@
 package com.caveryschool.waistwatcher;
 
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -17,12 +21,16 @@ import java.util.Locale;
 
 public class EnterWeightActivity extends AppCompatActivity {
     private DatabaseManager _databaseManager;
+    private static final int PHOTO_REQUEST = 1;
+    private Bitmap bitmap;
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enterweight);
         this._databaseManager = new DatabaseManager(this);
+        this.imageView = (ImageView) findViewById(R.id.take_picture_button);
     }
 
     public void goBack(View view){
@@ -60,5 +68,22 @@ public class EnterWeightActivity extends AppCompatActivity {
 
     public void tempDelete(View view) {
         this._databaseManager.clearTheDatabase();
+    }
+
+    public void takePicture(View view) {
+        PackageManager manager = this.getPackageManager();
+        if(manager.hasSystemFeature(PackageManager.FEATURE_CAMERA)){
+            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(takePictureIntent, PHOTO_REQUEST);
+        }
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == PHOTO_REQUEST && resultCode == RESULT_OK){
+            Bundle extras = data.getExtras();
+            bitmap = (Bitmap) extras.get("data");
+
+        }
     }
 }
