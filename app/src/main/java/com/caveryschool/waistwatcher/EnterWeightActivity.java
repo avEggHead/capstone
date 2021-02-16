@@ -30,7 +30,7 @@ public class EnterWeightActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enterweight);
         this._databaseManager = new DatabaseManager(this);
-        this.imageView = (ImageView) findViewById(R.id.take_picture_button);
+        this.imageView = (ImageView) findViewById(R.id.picture_container);
     }
 
     public void goBack(View view){
@@ -83,7 +83,7 @@ public class EnterWeightActivity extends AppCompatActivity {
         if(requestCode == PHOTO_REQUEST && resultCode == RESULT_OK){
             Bundle extras = data.getExtras();
             bitmap = (Bitmap) extras.get("data");
-
+            imageView.setImageBitmap(bitmap);
         }
     }
 }
