@@ -64,6 +64,7 @@ public class EnterWeightActivity extends AppCompatActivity {
 
         EditText weightField = findViewById(R.id.input_weight);
         weightField.setText("");
+        imageView.setImageBitmap(null);
     }
 
     public void tempDelete(View view) {
