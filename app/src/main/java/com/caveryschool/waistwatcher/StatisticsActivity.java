@@ -48,11 +48,13 @@ public class StatisticsActivity extends AppCompatActivity {
 
         String sign = "";
         if(change > 0){
-            sign = "+";
+            sign = "⇗";
+        } else {
+            sign = "⇘";
         }
 
         // set the field
-        sinceFirstWeight.setText(sign + String.valueOf(change));
+        sinceFirstWeight.setText(sign + String.valueOf(Math.abs(change)));
     }
 
     private void setSinceLastWeight() {
@@ -64,7 +66,9 @@ public class StatisticsActivity extends AppCompatActivity {
 
         String sign = "";
         if(change > 0){
-            sign = "+";
+            sign = "⇗";
+        } else {
+            sign = "⇘";
         }
 
         // set the field
