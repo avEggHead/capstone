@@ -5,4 +5,92 @@
     android:layout_height="match_parent"
     tools:context=".StatisticsActivity">
 
+    <ImageView
+        android:id="@+id/current_weight_header"
+        android:layout_width="255dp"
+        android:layout_height="49dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/current_weight_header"
+        />
+
+    <TextView
+        android:id="@+id/current_weight_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/current_weight_header"
+        android:layout_centerHorizontal="true"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:textColor="@color/teal_700"
+        android:fontFamily="@font/my_custom_font"
+        android:text="185.89"
+        />
+
+    <ImageView
+        android:id="@+id/bmi_header"
+        android:layout_width="255dp"
+        android:layout_height="49dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/current_weight_field"
+        android:src="@drawable/bmi_header"
+        />
+
+    <TextView
+        android:id="@+id/bmi_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bmi_header"
+        android:layout_centerHorizontal="true"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:textColor="@color/teal_700"
+        android:fontFamily="@font/my_custom_font"
+        android:text="⇗10"
+        />
+
+    <ImageView
+        android:id="@+id/since_last_weight"
+        android:layout_width="255dp"
+        android:layout_height="49dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/bmi_field"
+        android:src="@drawable/since_last_weight"
+        />
+
+    <TextView
+        android:id="@+id/since_last_weight_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/since_last_weight"
+        android:layout_centerHorizontal="true"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:textColor="@color/teal_700"
+        android:fontFamily="@font/my_custom_font"
+        android:text="⇗10"
+        />
+
+    <ImageView
+        android:id="@+id/since_starting_header"
+        android:layout_width="255dp"
+        android:layout_height="49dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/since_last_weight_field"
+        android:src="@drawable/since_starting_header"
+        />
+
+    <TextView
+        android:id="@+id/since_starting_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/since_starting_header"
+        android:layout_centerHorizontal="true"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:textColor="@color/teal_700"
+        android:fontFamily="@font/my_custom_font"
+        android:text="⇘20"
+        />
+
+
 </RelativeLayout>
