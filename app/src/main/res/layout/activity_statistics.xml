@@ -92,5 +92,12 @@
         android:text="⇘20"
         />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="goBack"
+        android:layout_below="@id/since_starting_field"
+        android:src="@drawable/go_back" />
+
 
 </RelativeLayout>
