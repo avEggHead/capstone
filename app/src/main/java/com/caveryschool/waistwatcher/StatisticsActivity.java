@@ -13,6 +13,8 @@ import java.util.List;
 public class StatisticsActivity extends AppCompatActivity {
     private DatabaseManager _databaseManager;
     private float _currentWeight;
+    private float _previousWeight;
+    private float _firstWeight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +34,41 @@ public class StatisticsActivity extends AppCompatActivity {
         // set BMI field
         setBMIField();
         // set since last field
-
+        setSinceLastWeight();
         // set since start field
+        setSinceFirstWeight();
+    }
 
+    private void setSinceFirstWeight() {
+        // get the field
+        TextView sinceFirstWeight = (TextView) findViewById(R.id.since_starting_field);
+
+        // calculate
+        float change = this._currentWeight - this._firstWeight;
+
+        String sign = "";
+        if(change > 0){
+            sign = "+";
+        }
+
+        // set the field
+        sinceFirstWeight.setText(sign + String.valueOf(change));
+    }
+
+    private void setSinceLastWeight() {
+        // get the field
+        TextView sinceLastWeight = (TextView) findViewById(R.id.since_last_weight_field);
+
+        // calculate
+        float change = this._currentWeight - this._previousWeight;
+
+        String sign = "";
+        if(change > 0){
+            sign = "+";
+        }
+
+        // set the field
+        sinceLastWeight.setText(sign + String.valueOf(change));
     }
 
     private void setBMIField() {
@@ -48,7 +82,16 @@ public class StatisticsActivity extends AppCompatActivity {
     }
 
     private String calculateBMI() {
-        float calculatedBMI = 25;
+        // get height from the settings in the database
+        PersonalSettings personalSettings = this._databaseManager.getPersonalSettings();
+        int tempHeightInchValue = personalSettings.getHeightInInches();
+        int feet = personalSettings.getHeightInFeet();
+        int heightInches = feet * 12 + tempHeightInchValue;
+        // 703 X Weight in lbs / height in inches squared
+        float calculatedBMI = (703 * this._currentWeight) / (heightInches * heightInches);
+        // get height
+
+
         return String.valueOf(calculatedBMI);
     }
 
@@ -60,11 +103,19 @@ public class StatisticsActivity extends AppCompatActivity {
         String outputValue = "";
         if(!weights.isEmpty()){
             Weight currentWeight = new Weight(0, 0, 0);
+            Weight previousWeight = new Weight(0, 0, 0);
             for (int i=0; i < weights.size(); i++) {
+                if(i == 0){
+                    this._firstWeight = weights.get(i).getWeight();
+                }
                 if(weights.get(i).getID() > currentWeight.getID()) {
                     currentWeight = weights.get(i);
+                    if(i > 0){
+                        previousWeight = weights.get(i-1);
+                    }
                 }
             }
+            this._previousWeight = previousWeight.getWeight();
             this._currentWeight = currentWeight.getWeight();
             outputValue = String.valueOf(this._currentWeight);
         }
