@@ -63,4 +63,9 @@ public class MainActivity extends AppCompatActivity {
         Intent history = new Intent(this,HistoryClassicActivity.class);
         this.startActivity(history);
     }
+
+    public void goToStatistics(View view) {
+        Intent statistics = new Intent(this,StatisticsActivity.class);
+        this.startActivity(statistics);
+    }
 }

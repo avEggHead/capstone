@@ -55,10 +55,19 @@
         android:src="@drawable/view_history" />
 
     <ImageView
+        android:id="@+id/view_statistics"
+        android:layout_width="339dp"
+        android:layout_height="109dp"
+        android:layout_below="@id/view_history"
+        android:layout_centerHorizontal="true"
+        android:onClick="goToStatistics"
+        android:src="@drawable/statistics_button" />
+
+    <ImageView
         android:id="@+id/settings"
         android:layout_width="166dp"
         android:layout_height="106dp"
-        android:layout_below="@id/view_history"
+        android:layout_below="@id/view_statistics"
         android:layout_centerHorizontal="true"
         android:onClick="goToSettings"
         android:src="@drawable/settings_icon" />
