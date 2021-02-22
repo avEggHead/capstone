@@ -72,7 +72,7 @@ public class StatisticsActivity extends AppCompatActivity {
         }
 
         // set the field
-        sinceLastWeight.setText(sign + String.valueOf(change));
+        sinceLastWeight.setText(sign + String.valueOf(Math.abs(change)));
     }
 
     private void setBMIField() {
