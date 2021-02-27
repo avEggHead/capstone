@@ -126,4 +126,13 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public void upsertPersonalSettings(PersonalSettings newSettings) {
         insertSettings(newSettings);
     }
+
+    public void deleteWeightEntry(int weightId){
+        String sqlQuery = "DELETE from " + TABLE_WEIGHTS;
+        sqlQuery += " WHERE ID = " + weightId;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL(sqlQuery);
+        db.close();
+    }
 }

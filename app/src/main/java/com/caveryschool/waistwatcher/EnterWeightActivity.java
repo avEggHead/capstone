@@ -75,6 +75,7 @@ public class EnterWeightActivity extends AppCompatActivity {
         PackageManager manager = this.getPackageManager();
         if(manager.hasSystemFeature(PackageManager.FEATURE_CAMERA)){
             Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, "/waistWatcherImages/");
             startActivityForResult(takePictureIntent, PHOTO_REQUEST);
         }
     }

@@ -15,6 +15,7 @@
         tools:context=".HistoryClassicActivity">
 
             <ImageView
+                android:tag=""
                 android:id="@+id/history_screen_heading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -29,6 +30,16 @@
             android:layout_below="@+id/history_screen_heading"
             tools:context=".HistoryClassicActivity"/>
 
+            <TextView
+                android:id="@+id/weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="50sp"
+                android:textStyle="bold"
+                android:textColor="@color/teal_700"
+                android:fontFamily="@font/my_custom_font"
+                >
+            </TextView>
 
             <ImageView
                 android:layout_width="wrap_content"
