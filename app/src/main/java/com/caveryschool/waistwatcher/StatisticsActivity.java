@@ -106,8 +106,8 @@ public class StatisticsActivity extends AppCompatActivity {
         List<Weight> weights = this._databaseManager.selectAll();
         String outputValue = "";
         if(!weights.isEmpty()){
-            Weight currentWeight = new Weight(0, 0, 0);
-            Weight previousWeight = new Weight(0, 0, 0);
+            Weight currentWeight = new Weight(0, 0, 0, "");
+            Weight previousWeight = new Weight(0, 0, 0, "");
             for (int i=0; i < weights.size(); i++) {
                 if(i == 0){
                     this._firstWeight = weights.get(i).getWeight();

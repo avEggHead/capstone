@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WaistWatcher">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:exported="true"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".EnterWeightActivity"
+            android:exported="true"
             android:screenOrientation="portrait"/>
         <activity android:name=".SettingsActivity"
             android:screenOrientation="portrait"/>
@@ -26,7 +29,16 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".StatisticsActivity"
             android:screenOrientation="portrait"/>
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.caveryschool.waistwatcher.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
 </manifest>

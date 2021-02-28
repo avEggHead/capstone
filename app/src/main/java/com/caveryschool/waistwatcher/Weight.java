@@ -5,6 +5,7 @@ public class Weight {
     private float Weight;
     private int CreatedOnDate;
     private int CreatedOnTime;
+    private String ImageId;
 
     public int getCreatedOnTime() {
         return CreatedOnTime;
@@ -14,10 +15,11 @@ public class Weight {
         CreatedOnTime = createdOnTime;
     }
 
-    public Weight(float weight, int createdOnDate, int createdOnTime) {
+    public Weight(float weight, int createdOnDate, int createdOnTime, String imageId) {
         Weight = weight;
         CreatedOnDate = createdOnDate;
         CreatedOnTime = createdOnTime;
+        ImageId = imageId;
     }
 
     public int getID() {
@@ -42,5 +44,13 @@ public class Weight {
 
     public void setCreatedOnDate(int createdOnDate) {
         CreatedOnDate = createdOnDate;
+    }
+
+    public String getImageId() {
+        return ImageId;
+    }
+
+    public void setImageId(String imageId) {
+        ImageId = imageId;
     }
 }

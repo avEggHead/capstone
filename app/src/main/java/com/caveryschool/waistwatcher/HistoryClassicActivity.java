@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.ContactsContract;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.File;
 import java.util.List;
 
 public class HistoryClassicActivity extends AppCompatActivity {
@@ -59,19 +61,37 @@ public class HistoryClassicActivity extends AppCompatActivity {
             int columnOneId = View.generateViewId();
             Float weightUnformatted = weights.get(i).getWeight();
             Integer date = weights.get(i).getCreatedOnDate();
+
+            // column one is the weight and date
             columnOne.setTypeface(tf);
             columnOne.setTextSize(15);
             columnOne.setTextColor(TEAL);
             columnOne.setText(" " + String.valueOf(weightUnformatted) + " lbs" + "   " + String.valueOf(date));
             columnOne.setId(columnOneId);
 
+            // column two is the image
             ImageView columnTwo = new ImageView(this);
             RelativeLayout.LayoutParams paramsForColumn2= new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,75);
             paramsForColumn2.addRule(RelativeLayout.RIGHT_OF, columnOneId);
-            columnTwo.setImageBitmap(this._trashCan);
+            int columnTwoId = columnOneId + 10000;
+            columnTwo.setId(columnTwoId);
             columnTwo.setLayoutParams(paramsForColumn2);
-            columnTwo.setTag(weights.get(i).getID());
-            columnTwo.setOnClickListener((View v) -> {
+            File weightTrackingImageFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)+ "/WAIST_WATCHER_IMAGES/" + weights.get(i).getImageId() + ".png");
+            Bitmap weightTrackingBitmap = BitmapFactory.decodeFile(weightTrackingImageFile.getAbsolutePath());
+            columnTwo.setImageBitmap(weightTrackingBitmap);
+
+            // column three is the trash can
+            ImageView columnThree = new ImageView(this);
+            RelativeLayout.LayoutParams paramsForColumn3= new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,75);
+            if(weightTrackingBitmap != null){
+                paramsForColumn3.addRule(RelativeLayout.RIGHT_OF, columnTwoId);
+            } else{
+                paramsForColumn3.addRule(RelativeLayout.RIGHT_OF, columnOneId);
+            }
+            columnThree.setImageBitmap(this._trashCan);
+            columnThree.setLayoutParams(paramsForColumn3);
+            columnThree.setTag(weights.get(i).getID());
+            columnThree.setOnClickListener((View v) -> {
                 int weightId = Integer.parseInt(v.getTag().toString());
                 _databaseManager.deleteWeightEntry(weightId);
                 Intent reloadHistory = new Intent(this,HistoryClassicActivity.class);
@@ -84,6 +104,7 @@ public class HistoryClassicActivity extends AppCompatActivity {
 
             row.addView(columnOne);
             row.addView(columnTwo);
+            row.addView(columnThree);
 
             layout.addView(row);
             previousID = rowId;

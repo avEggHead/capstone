@@ -10,12 +10,13 @@ import java.util.List;
 
 public class DatabaseManager extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "WeightTracker";
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
     private static final String TABLE_WEIGHTS = "weights";
     private static final String ID = "id";
     private static final String WEIGHT = "weight";
     private static final String CREATED_ON_DATE = "created_on_date";
     private static final String CREATED_ON_TIME = "created_on_time";
+    private static final String IMAGE_ID = "image_id";
 
     private static final String TABLE_SETTINGS = "settings";
     private static final String GOAL_WEIGHT= "goal_weight";
@@ -32,8 +33,9 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String sqlCreateWeightsTable = "create table " + TABLE_WEIGHTS + "( " + ID;
         sqlCreateWeightsTable += " integer primary key autoincrement, " + WEIGHT;
-        sqlCreateWeightsTable += " real, " + CREATED_ON_DATE + " real, " + CREATED_ON_TIME +" real )";
-        
+        sqlCreateWeightsTable += " real, " + CREATED_ON_DATE + " real, " + CREATED_ON_TIME +" real, ";
+        sqlCreateWeightsTable += IMAGE_ID + " text )";
+
         String sqlCreateSettingsTable = "create table " + TABLE_SETTINGS + "( " + ID;
         sqlCreateSettingsTable += " integer primary key autoincrement, " + GOAL_WEIGHT;
         sqlCreateSettingsTable += " real, " + GOAL_DATE + " real, " + GENDER +" text,";
@@ -63,7 +65,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
         List<Weight> weights = new ArrayList<Weight>();
         while(cursor.moveToNext()){
-            Weight weight = new Weight(cursor.getFloat(1), cursor.getInt(2), cursor.getInt(3));
+            Weight weight = new Weight(cursor.getFloat(1), cursor.getInt(2), cursor.getInt(3), cursor.getString(4));
                     weight.setID(cursor.getInt(0));
             weights.add(weight);
         }
@@ -89,7 +91,8 @@ public class DatabaseManager extends SQLiteOpenHelper {
         String sqlInsert = "insert into " + TABLE_WEIGHTS;
         sqlInsert += " values( null, " + weight.getWeight();
         sqlInsert += ", " + weight.getCreatedOnDate();
-        sqlInsert += ", " + weight.getCreatedOnTime() + " )";
+        sqlInsert += ", " + weight.getCreatedOnTime();
+        sqlInsert += ", '" + weight.getImageId() + "' )";
 
         db.execSQL(sqlInsert);
         db.close();
