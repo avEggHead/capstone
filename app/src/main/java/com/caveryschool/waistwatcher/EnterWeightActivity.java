@@ -56,22 +56,27 @@ public class EnterWeightActivity extends AppCompatActivity {
         // get the value from the edit text box
         EditText weightField = findViewById(R.id.input_weight);
         String unParsedWeight = weightField.getText().toString();
-        Float weightValue = Float.parseFloat(unParsedWeight);
+        if(unParsedWeight.length() > 0){
+            Float weightValue = Float.parseFloat(unParsedWeight);
 
-        Calendar calendar = Calendar.getInstance(Locale.US);
-        Timestamp timestamp = new Timestamp(calendar.getTimeInMillis());
+            Calendar calendar = Calendar.getInstance(Locale.US);
+            Timestamp timestamp = new Timestamp(calendar.getTimeInMillis());
 
-        Date date = new Date();
-        String dateStamp = String.valueOf(timestamp.toString()).substring(0,10).replace("-", "");
-        String instantStamp = String.valueOf(timestamp.toString()).substring(11,19).replace(":","");
+            Date date = new Date();
+            String dateStamp = String.valueOf(timestamp.toString()).substring(0,10).replace("-", "");
+            String instantStamp = String.valueOf(timestamp.toString()).substring(11,19).replace(":","");
 
-        // create the weight object
-        Weight weight = new Weight(weightValue, Integer.parseInt(dateStamp), Integer.parseInt(instantStamp), this._imageIdentifier);
+            // create the weight object
+            Weight weight = new Weight(weightValue, Integer.parseInt(dateStamp), Integer.parseInt(instantStamp), this._imageIdentifier);
 
-        // insert it into the database
-        this._databaseManager.insertWeight(weight);
+            // insert it into the database
+            this._databaseManager.insertWeight(weight);
 
-        this.finish();
+            this.finish();
+        } else{
+
+        }
+
     }
 
     public void clearAll(View view){

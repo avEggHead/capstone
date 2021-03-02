@@ -64,7 +64,7 @@ public class HistoryClassicActivity extends AppCompatActivity {
 
             // column one is the weight and date
             columnOne.setTypeface(tf);
-            columnOne.setTextSize(15);
+            columnOne.setTextSize(25);
             columnOne.setTextColor(TEAL);
             columnOne.setText(" " + String.valueOf(weightUnformatted) + " lbs" + "   " + String.valueOf(date));
             columnOne.setId(columnOneId);
