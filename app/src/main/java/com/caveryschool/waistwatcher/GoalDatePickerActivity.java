@@ -24,8 +24,20 @@ public class GoalDatePickerActivity extends AppCompatActivity {
         // subtract 1 from it
         int newYearInt = yearInt - 1;
 
+        // if month is feb check to see if the day needs adjusted and adjust it
+        this.checkIfFebAndUpdateDay(newYearInt);
+
         // set the new value in the field
         yearField.setText(String.valueOf(newYearInt));
+    }
+
+    private void checkIfFebAndUpdateDay(int newYearInt) {
+        TextView monthField = this.findViewById(R.id.month_value);
+        int month = Integer.parseInt(monthField.getText().toString());
+        if(month == 2){
+            // if it is feb than we need to check the day
+            this.setDayIfItIsOutOfRangeInNewMonth(month, newYearInt);
+        }
     }
 
     public void incrementYear(View view) {
@@ -35,6 +47,9 @@ public class GoalDatePickerActivity extends AppCompatActivity {
 
         // add 1 to it
         int newYearInt = yearInt + 1;
+
+        // if month is feb check to see if the day needs adjusted and adjust it
+        this.checkIfFebAndUpdateDay(newYearInt);
 
         // set the new value in the field
         yearField.setText(String.valueOf(newYearInt));
@@ -83,16 +98,16 @@ public class GoalDatePickerActivity extends AppCompatActivity {
         }
 
         // check to make sure the day isn't out of range for the new month
-        this.setDayIfItIsOutOfRangeInNewMonth(newMonthInt);
+        this.setDayIfItIsOutOfRangeInNewMonth(newMonthInt,0);
 
         // set the new value in the field
         monthField.setText(String.valueOf(newMonthInt));
     }
 
-    private void setDayIfItIsOutOfRangeInNewMonth(int newMonthInt) {
+    private void setDayIfItIsOutOfRangeInNewMonth(int newMonthInt, int newYearInt) {
         TextView dayField = this._layout.findViewById(R.id.day_value);
         int dayInt = Integer.parseInt(dayField.getText().toString());
-        int lastDayOfChosenMonthIn = getLastDayOfChosenMonth(newMonthInt);
+        int lastDayOfChosenMonthIn = getLastDayOfChosenMonth(newMonthInt, newYearInt);
         if(dayInt > lastDayOfChosenMonthIn){
             dayField.setText(String.valueOf(lastDayOfChosenMonthIn));
         }
@@ -112,7 +127,7 @@ public class GoalDatePickerActivity extends AppCompatActivity {
         }
 
         // check to make sure the day isn't out of range for the new month
-        this.setDayIfItIsOutOfRangeInNewMonth(newMonthInt);
+        this.setDayIfItIsOutOfRangeInNewMonth(newMonthInt,0);
 
         // set the new value in the field
         monthField.setText(String.valueOf(newMonthInt));
@@ -136,7 +151,7 @@ public class GoalDatePickerActivity extends AppCompatActivity {
     }
 
     private int totalDaysInChosenMonth() {
-        return getLastDayOfChosenMonth(0);
+        return getLastDayOfChosenMonth(0,0);
     }
 
     public void decrementDay(View view) {
@@ -149,14 +164,14 @@ public class GoalDatePickerActivity extends AppCompatActivity {
         if(dayInt > 1){
             newMonthInt = dayInt - 1;
         } else {
-            newMonthInt = this.getLastDayOfChosenMonth(0);
+            newMonthInt = this.getLastDayOfChosenMonth(0,0);
         }
 
         // set the new value in the field
         dayField.setText(String.valueOf(newMonthInt));
     }
 
-    private int getLastDayOfChosenMonth(int month) {
+    private int getLastDayOfChosenMonth(int month, int year) {
         int lastDayOfMonth = 0;
 
         // get the month
@@ -165,9 +180,11 @@ public class GoalDatePickerActivity extends AppCompatActivity {
             month = Integer.parseInt(monthField.getText().toString());
         }
 
+        if (year == 0){
+            TextView yearField = this.findViewById(R.id.year_value);
+            year = Integer.parseInt(yearField.getText().toString());
+        }
 
-        TextView yearField = this.findViewById(R.id.year_value);
-        int year = Integer.parseInt(yearField.getText().toString());
 
         // switch based on month
         switch(month){
