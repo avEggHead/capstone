@@ -64,7 +64,6 @@
         android:src="@drawable/statistics_button" />
 
     <ImageView
-        android:id="@+id/settings"
         android:layout_width="166dp"
         android:layout_height="106dp"
         android:layout_below="@id/view_statistics"

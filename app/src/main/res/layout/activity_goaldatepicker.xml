@@ -61,6 +61,90 @@
         app:layout_constraintTop_toBottomOf="@+id/year_heading"
         app:layout_constraintVertical_bias="0.034" />
 
+    <ImageView
+        android:id="@+id/month_heading"
+        android:layout_width="173dp"
+        android:layout_height="64dp"
+        android:src="@drawable/month_heading"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/year_value"
+        app:layout_constraintVertical_bias="0.028" />
+
+    <ImageView
+        android:id="@+id/month_arrow_right"
+        android:layout_width="51dp"
+        android:layout_height="wrap_content"
+        android:onClick="incrementMonth"
+        android:src="@drawable/arrow_right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.955"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.343" />
+
+    <ImageView
+        android:id="@+id/month_arrow_left"
+        android:layout_width="51dp"
+        android:layout_height="wrap_content"
+        android:onClick="decrementMonth"
+        android:src="@drawable/arrow_left"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.077"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.343" />
+
+    <TextView
+        android:id="@+id/month_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:fontFamily="@font/my_custom_font"
+        android:inputType="numberDecimal"
+        android:text="01"
+        android:textColor="@color/teal_700"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/month_arrow_right"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toEndOf="@+id/month_arrow_left"
+        app:layout_constraintTop_toBottomOf="@+id/month_heading"
+        app:layout_constraintVertical_bias="0.041" />
+
+
+    <ImageView
+        android:id="@+id/day_heading"
+        android:layout_width="173dp"
+        android:layout_height="64dp"
+        android:src="@drawable/day_heading"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/month_value"
+        app:layout_constraintVertical_bias="0.042" />
+
+    <TextView
+        android:id="@+id/day_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:fontFamily="@font/my_custom_font"
+        android:inputType="numberDecimal"
+        android:text="01"
+        android:textColor="@color/teal_700"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/month_arrow_right"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toEndOf="@+id/month_arrow_left"
+        app:layout_constraintTop_toBottomOf="@+id/day_heading"
+        app:layout_constraintVertical_bias="0.062" />
 
     <ImageView
         android:id="@+id/submit_button"
@@ -91,7 +175,6 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
         android:layout_width="57dp"
         android:layout_height="63dp"
         android:layout_below="@id/submit_button"
