@@ -12,10 +12,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class SettingsActivity extends AppCompatActivity {
     private DatabaseManager _databaseManager;
-    private RelativeLayout _layout;
+    private ConstraintLayout _layout;
 
 
     @Override
