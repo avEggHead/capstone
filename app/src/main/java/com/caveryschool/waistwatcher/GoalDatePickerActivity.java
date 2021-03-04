@@ -47,10 +47,17 @@ public class GoalDatePickerActivity extends AppCompatActivity {
         // get the date data
         TextView yearField = this._layout.findViewById(R.id.year_value);
         int yearInt = Integer.parseInt(yearField.getText().toString());
-
+        TextView monthField = this._layout.findViewById(R.id.month_value);
+        int monthInt = Integer.parseInt(monthField.getText().toString());
+        TextView dayField = this._layout.findViewById(R.id.day_value);
+        int dayInt = Integer.parseInt(dayField.getText().toString());
         // bundle up the data
+        String monthString = (""+(100+monthInt)).substring(1);
+        String dayString = (""+(100+dayInt)).substring(1);
+        String dateForBundle = String.valueOf(yearInt) + monthString + dayString;
+
         Bundle dateBundle = new Bundle();
-        dateBundle.putString("date", String.valueOf(yearInt));
+        dateBundle.putString("date", dateForBundle);
 
         // pass the data and start the new activity
         settingsActivity.putExtras(dateBundle);

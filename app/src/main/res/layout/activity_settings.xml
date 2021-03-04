@@ -82,9 +82,9 @@
         android:fontFamily="@font/my_custom_font"
         android:inputType="numberDecimal"
         android:textColor="@color/teal_700"
-        android:textSize="48sp"
+        android:textSize="35sp"
         android:textStyle="bold"
-        android:maxLength="6"
+        android:maxLength="8"
         android:onClick="goToDatePicker"/>
 
     <ImageView
