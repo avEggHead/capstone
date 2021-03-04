@@ -57,7 +57,8 @@
         android:layout_below="@id/goal_label"
         android:layout_marginTop="7dp"
         android:layout_marginStart="50dp"
-        android:src="@drawable/by_date_label" />
+        android:src="@drawable/by_date_label"
+        android:onClick="goToDatePicker"/>
 
     <ImageView
         android:id="@+id/by_date_field"
@@ -67,9 +68,10 @@
         android:layout_marginLeft="-29dp"
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@id/by_label"
-        android:src="@drawable/by_date_field" />
+        android:src="@drawable/by_date_field"
+        android:onClick="goToDatePicker"/>
 
-    <EditText
+    <TextView
         android:id="@+id/input_goal_date"
         android:layout_width="226dp"
         android:layout_height="58dp"
@@ -83,7 +85,8 @@
         android:textColor="@color/teal_700"
         android:textSize="48sp"
         android:textStyle="bold"
-        android:maxLength="6"/>
+        android:maxLength="6"
+        android:onClick="goToDatePicker"/>
 
     <ImageView
         android:id="@+id/gender_label"
@@ -118,7 +121,7 @@
         android:layout_width="249dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/gender_label"
-        android:layout_marginLeft="-27dp"
+        android:layout_marginLeft="-25dp"
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@id/height_label"
         android:src="@drawable/height_field" />
@@ -173,11 +176,13 @@
 
     <EditText
         android:id="@+id/height_in_feet"
-        android:layout_width="28dp"
+        android:layout_width="52dp"
         android:layout_height="56dp"
         android:layout_below="@+id/gender_field"
+        android:layout_alignStart="@+id/height_field"
+        android:layout_marginStart="32dp"
         android:layout_marginLeft="7dp"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="25dp"
         android:layout_toRightOf="@+id/height_label"
         android:background="@null"
         android:fontFamily="@font/my_custom_font"
@@ -189,11 +194,13 @@
 
     <EditText
         android:id="@+id/height_in_inches"
-        android:layout_width="30dp"
-        android:layout_height="57dp"
+        android:layout_width="46dp"
+        android:layout_height="52dp"
         android:layout_below="@+id/gender_field"
-        android:layout_marginLeft="69dp"
-        android:layout_marginTop="27dp"
+        android:layout_alignStart="@+id/height_field"
+        android:layout_marginStart="103dp"
+        android:layout_marginLeft="78dp"
+        android:layout_marginTop="28dp"
         android:layout_toRightOf="@+id/height_label"
         android:background="@null"
         android:fontFamily="@font/my_custom_font"

@@ -1,12 +1,14 @@
 package com.caveryschool.waistwatcher;
 
 import android.app.Person;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
@@ -55,8 +57,15 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void setGoalDate(PersonalSettings personalSettings) {
-        EditText goalDate = this._layout.findViewById(R.id.input_goal_date);
-        String date = String.valueOf(personalSettings.getGoalDate());
+        // if the settings screen was started by the date picker than use the data from the date picker.
+        TextView goalDate = this._layout.findViewById(R.id.input_goal_date);
+        String date = "";
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null){
+            date = bundle.getString("date");
+        }else{
+            date = String.valueOf(personalSettings.getGoalDate());
+        }
         goalDate.setText(date);
     }
 
@@ -79,7 +88,8 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void goBack(View view){
-        this.finish();
+        Intent mainScreen = new Intent(this,MainActivity.class);
+        this.startActivity(mainScreen);
     }
 
     public void selectMale(View view) {
@@ -103,7 +113,7 @@ public class SettingsActivity extends AppCompatActivity {
         // get all the values
         EditText goalWeightField = this._layout.findViewById(R.id.input_goal_weight);
         float goalWeight = Float.parseFloat(String.valueOf(goalWeightField.getText()));
-        EditText goalDateField = this._layout.findViewById(R.id.input_goal_date);
+        TextView goalDateField = this._layout.findViewById(R.id.input_goal_date);
         int goalDate = Integer.parseInt(String.valueOf(goalDateField.getText()));
         ImageView genderFieldImage = this._layout.findViewById(R.id.gender_field);
         char gender = String.valueOf(genderFieldImage.getTag()).charAt(0);
@@ -124,7 +134,12 @@ public class SettingsActivity extends AppCompatActivity {
         // insert the object into the database
         this._databaseManager.upsertPersonalSettings(personalSettings);
 
-        this.finish();
+        this.goBack(null);
+    }
+
+    public void goToDatePicker(View view) {
+        Intent goalDatePicker = new Intent(this,GoalDatePickerActivity.class);
+        this.startActivity(goalDatePicker);
     }
 }
 

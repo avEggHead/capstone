@@ -29,6 +29,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".StatisticsActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".GoalDatePickerActivity"
+            android:screenOrientation="portrait"/>
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.caveryschool.waistwatcher.provider"

@@ -100,13 +100,6 @@ public class EnterWeightActivity extends AppCompatActivity {
             this._imageIdentifier = java.util.UUID.randomUUID().toString();
             File fileLocation = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM), "WAIST_WATCHER_IMAGES");
             File actualFile = new File(fileLocation, this._imageIdentifier + ".jpg");
-//            Uri image = FileProvider.getUriForFile(
-//                    this,
-//                  "com.caveryschool.waistwatcher.provider",
-//                  location
-//            );
-
-//            takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(actualFile));
             takePictureIntent.setFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
             startActivityForResult(takePictureIntent, PHOTO_REQUEST);
         }
