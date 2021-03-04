@@ -76,9 +76,19 @@ public class GoalDatePickerActivity extends AppCompatActivity {
         }
 
         // check to make sure the day isn't out of range for the new month
+        this.setDayIfItIsOutOfRangeInNewMonth(newMonthInt);
 
         // set the new value in the field
         monthField.setText(String.valueOf(newMonthInt));
+    }
+
+    private void setDayIfItIsOutOfRangeInNewMonth(int newMonthInt) {
+        TextView dayField = this._layout.findViewById(R.id.day_value);
+        int dayInt = Integer.parseInt(dayField.getText().toString());
+        int lastDayOfChosenMonthIn = getLastDayOfChosenMonth(newMonthInt);
+        if(dayInt > lastDayOfChosenMonthIn){
+            dayField.setText(String.valueOf(lastDayOfChosenMonthIn));
+        }
     }
 
     public void decrementMonth(View view) {
@@ -93,6 +103,9 @@ public class GoalDatePickerActivity extends AppCompatActivity {
         } else {
             newMonthInt = 12;
         }
+
+        // check to make sure the day isn't out of range for the new month
+        this.setDayIfItIsOutOfRangeInNewMonth(newMonthInt);
 
         // set the new value in the field
         monthField.setText(String.valueOf(newMonthInt));
@@ -116,7 +129,7 @@ public class GoalDatePickerActivity extends AppCompatActivity {
     }
 
     private int totalDaysInChosenMonth() {
-        return getLastDayOfChosenMonth();
+        return getLastDayOfChosenMonth(0);
     }
 
     public void decrementDay(View view) {
@@ -129,19 +142,22 @@ public class GoalDatePickerActivity extends AppCompatActivity {
         if(dayInt > 1){
             newMonthInt = dayInt - 1;
         } else {
-            newMonthInt = this.getLastDayOfChosenMonth();
+            newMonthInt = this.getLastDayOfChosenMonth(0);
         }
 
         // set the new value in the field
         dayField.setText(String.valueOf(newMonthInt));
     }
 
-    private int getLastDayOfChosenMonth() {
+    private int getLastDayOfChosenMonth(int month) {
         int lastDayOfMonth = 0;
 
         // get the month
-        TextView monthField = this.findViewById(R.id.month_value);
-        int month = Integer.parseInt(monthField.getText().toString());
+        if (month == 0){
+            TextView monthField = this.findViewById(R.id.month_value);
+            month = Integer.parseInt(monthField.getText().toString());
+        }
+
 
         TextView yearField = this.findViewById(R.id.year_value);
         int year = Integer.parseInt(yearField.getText().toString());
