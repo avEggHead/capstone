@@ -75,6 +75,8 @@ public class GoalDatePickerActivity extends AppCompatActivity {
             newMonthInt = 1;
         }
 
+        // check to make sure the day isn't out of range for the new month
+
         // set the new value in the field
         monthField.setText(String.valueOf(newMonthInt));
     }
@@ -114,7 +116,59 @@ public class GoalDatePickerActivity extends AppCompatActivity {
     }
 
     private int totalDaysInChosenMonth() {
-        return 30;
+        return getLastDayOfChosenMonth();
     }
 
+    public void decrementDay(View view) {
+        // get the current value of the text field
+        TextView dayField = this._layout.findViewById(R.id.day_value);
+        int dayInt = Integer.parseInt(dayField.getText().toString());
+
+        // add 1 to it if the total is less than 12 otherwise circle around
+        int newMonthInt = 0;
+        if(dayInt > 1){
+            newMonthInt = dayInt - 1;
+        } else {
+            newMonthInt = this.getLastDayOfChosenMonth();
+        }
+
+        // set the new value in the field
+        dayField.setText(String.valueOf(newMonthInt));
+    }
+
+    private int getLastDayOfChosenMonth() {
+        int lastDayOfMonth = 0;
+
+        // get the month
+        TextView monthField = this.findViewById(R.id.month_value);
+        int month = Integer.parseInt(monthField.getText().toString());
+
+        TextView yearField = this.findViewById(R.id.year_value);
+        int year = Integer.parseInt(yearField.getText().toString());
+
+        // switch based on month
+        switch(month){
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                lastDayOfMonth = 31;
+                break;
+            case 2:
+                lastDayOfMonth = ((year % 400) == 0) || ((year % 4 == 0) && (year % 100 != 0)) ? 29  :  28;
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                lastDayOfMonth = 30;
+                break;
+            default:
+                //
+        }
+        return lastDayOfMonth;
+    }
 }
