@@ -76,13 +76,14 @@
         android:id="@+id/month_arrow_right"
         android:layout_width="51dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="68dp"
         android:onClick="incrementMonth"
         android:src="@drawable/arrow_right"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/year_arrow_right"
-        app:layout_constraintVertical_bias="0.13" />
+        app:layout_constraintHorizontal_bias="0.811"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.365" />
 
     <ImageView
         android:id="@+id/month_arrow_left"
@@ -92,9 +93,12 @@
         android:onClick="decrementMonth"
         android:src="@drawable/arrow_left"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/month_heading"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.343" />
+        app:layout_constraintTop_toTopOf="@+id/month_heading"
+        app:layout_constraintVertical_bias="0.13" />
+
 
     <TextView
         android:id="@+id/month_value"
@@ -109,11 +113,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/month_arrow_right"
-        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintHorizontal_bias="0.634"
         app:layout_constraintStart_toEndOf="@+id/month_arrow_left"
         app:layout_constraintTop_toBottomOf="@+id/month_heading"
-        app:layout_constraintVertical_bias="0.041" />
-
+        app:layout_constraintVertical_bias="0.051" />
 
     <ImageView
         android:id="@+id/day_heading"
@@ -138,9 +141,10 @@
         android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/day_heading"
+        app:layout_constraintStart_toStartOf="@+id/day_heading"
         app:layout_constraintTop_toBottomOf="@+id/day_heading"
-        app:layout_constraintVertical_bias="0.059"
-        tools:layout_editor_absoluteX="175dp" />
+        app:layout_constraintVertical_bias="0.059" />
 
     <ImageView
         android:id="@+id/day_arrow_right"
