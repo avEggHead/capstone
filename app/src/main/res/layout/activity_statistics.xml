@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,33 +8,47 @@
 
     <ImageView
         android:id="@+id/current_weight_header"
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:layout_centerHorizontal="true"
+        android:layout_width="230dp"
+        android:layout_height="71dp"
         android:src="@drawable/current_weight_header"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/current_weight_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/current_weight_header"
-        android:layout_centerHorizontal="true"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:textColor="@color/teal_700"
+        android:layout_marginBottom="488dp"
         android:fontFamily="@font/my_custom_font"
         android:text="185.89"
-        />
+        android:textColor="@color/teal_700"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/bmi_field"
+        app:layout_constraintHorizontal_bias="0.341"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/current_weight_header"
+        app:layout_constraintVertical_bias="0.093" />
 
     <ImageView
         android:id="@+id/bmi_header"
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:layout_centerHorizontal="true"
+        android:layout_width="158dp"
+        android:layout_height="67dp"
         android:layout_below="@id/current_weight_field"
+        android:layout_centerHorizontal="true"
         android:src="@drawable/bmi_header"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/bmi_field"
@@ -41,21 +56,28 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/bmi_header"
         android:layout_centerHorizontal="true"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:textColor="@color/teal_700"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="36dp"
         android:fontFamily="@font/my_custom_font"
         android:text="⇗10"
-        />
+        android:textColor="@color/teal_700"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:maxLength="4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bmi_header" />
 
     <ImageView
         android:id="@+id/since_last_weight"
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:layout_centerHorizontal="true"
+        android:layout_width="159dp"
+        android:layout_height="101dp"
         android:layout_below="@id/bmi_field"
+        android:layout_centerHorizontal="true"
         android:src="@drawable/since_last_weight"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.632" />
 
     <TextView
         android:id="@+id/since_last_weight_field"
@@ -63,21 +85,31 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/since_last_weight"
         android:layout_centerHorizontal="true"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:textColor="@color/teal_700"
         android:fontFamily="@font/my_custom_font"
         android:text="⇗10"
-        />
+        android:textColor="@color/teal_700"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/since_last_weight"
+        app:layout_constraintVertical_bias="0.101" />
 
     <ImageView
         android:id="@+id/since_starting_header"
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:layout_centerHorizontal="true"
+        android:layout_width="174dp"
+        android:layout_height="90dp"
         android:layout_below="@id/since_last_weight_field"
+        android:layout_centerHorizontal="true"
         android:src="@drawable/since_starting_header"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/since_last_weight"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.633" />
 
     <TextView
         android:id="@+id/since_starting_field"
@@ -85,19 +117,31 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/since_starting_header"
         android:layout_centerHorizontal="true"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:textColor="@color/teal_700"
         android:fontFamily="@font/my_custom_font"
         android:text="⇘20"
-        />
+        android:textColor="@color/teal_700"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.744"
+        app:layout_constraintStart_toEndOf="@+id/since_last_weight_field"
+        app:layout_constraintTop_toBottomOf="@+id/since_starting_header"
+        app:layout_constraintVertical_bias="0.113" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="goBack"
+        android:id="@+id/imageView3"
+        android:layout_width="83dp"
+        android:layout_height="70dp"
         android:layout_below="@id/since_starting_field"
-        android:src="@drawable/go_back" />
+        android:onClick="goBack"
+        android:src="@drawable/go_back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.974" />
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

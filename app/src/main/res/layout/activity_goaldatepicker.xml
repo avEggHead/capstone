@@ -26,7 +26,7 @@
         android:src="@drawable/arrow_right"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.955"
+        app:layout_constraintHorizontal_bias="0.811"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.124" />
@@ -39,7 +39,7 @@
         android:src="@drawable/arrow_left"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintHorizontal_bias="0.188"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.124" />
@@ -76,24 +76,22 @@
         android:id="@+id/month_arrow_right"
         android:layout_width="51dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="68dp"
         android:onClick="incrementMonth"
         android:src="@drawable/arrow_right"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.955"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.343" />
+        app:layout_constraintTop_toBottomOf="@+id/year_arrow_right"
+        app:layout_constraintVertical_bias="0.13" />
 
     <ImageView
         android:id="@+id/month_arrow_left"
         android:layout_width="51dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
         android:onClick="decrementMonth"
         android:src="@drawable/arrow_left"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.077"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.343" />
@@ -140,11 +138,9 @@
         android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/month_arrow_right"
-        app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toEndOf="@+id/month_arrow_left"
         app:layout_constraintTop_toBottomOf="@+id/day_heading"
-        app:layout_constraintVertical_bias="0.062" />
+        app:layout_constraintVertical_bias="0.059"
+        tools:layout_editor_absoluteX="175dp" />
 
     <ImageView
         android:id="@+id/day_arrow_right"
@@ -154,8 +150,7 @@
         android:src="@drawable/arrow_right"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.955"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/day_value"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.562" />
 
@@ -166,8 +161,7 @@
         android:onClick="decrementDay"
         android:src="@drawable/arrow_left"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.077"
+        app:layout_constraintEnd_toStartOf="@+id/day_value"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.562" />
@@ -181,10 +175,10 @@
         android:src="@drawable/submit_button"
         app:layout_constraintBottom_toTopOf="@+id/cancel_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.413"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.975" />
+        app:layout_constraintVertical_bias="0.973" />
 
     <ImageView
         android:id="@+id/cancel_button"
@@ -192,12 +186,12 @@
         android:layout_height="64dp"
         android:layout_below="@id/submit_button"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="32dp"
         android:onClick="clearAll"
         android:src="@drawable/cancel_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.452"
+        app:layout_constraintHorizontal_bias="0.537"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
