@@ -154,9 +154,10 @@
         android:src="@drawable/arrow_right"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.451"
         app:layout_constraintStart_toEndOf="@+id/day_value"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.562" />
+        app:layout_constraintTop_toBottomOf="@+id/month_arrow_right"
+        app:layout_constraintVertical_bias="0.161" />
 
     <ImageView
         android:id="@+id/day_arrow_left"
@@ -166,9 +167,10 @@
         android:src="@drawable/arrow_left"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/day_value"
+        app:layout_constraintHorizontal_bias="0.548"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.562" />
+        app:layout_constraintTop_toBottomOf="@+id/month_arrow_left"
+        app:layout_constraintVertical_bias="0.194" />
 
     <ImageView
         android:id="@+id/submit_button"

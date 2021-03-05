@@ -111,26 +111,37 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void submitPersonalSettings(View view) {
-        // get all the values
+        // get all the values and set up the personal settings object for insert
         EditText goalWeightField = this._layout.findViewById(R.id.input_goal_weight);
-        float goalWeight = Float.parseFloat(String.valueOf(goalWeightField.getText()));
         TextView goalDateField = this._layout.findViewById(R.id.input_goal_date);
-        int goalDate = Integer.parseInt(String.valueOf(goalDateField.getText()));
         ImageView genderFieldImage = this._layout.findViewById(R.id.gender_field);
-        char gender = String.valueOf(genderFieldImage.getTag()).charAt(0);
         EditText heightInFeetField = this._layout.findViewById(R.id.height_in_feet);
-        int feet = Integer.parseInt(String.valueOf(heightInFeetField.getText()));
         EditText heightInInchesField = this._layout.findViewById(R.id.height_in_inches);
-        int inches = Integer.parseInt(String.valueOf(heightInInchesField.getText()));
 
-
-        // create the personal settings object
         PersonalSettings personalSettings = new PersonalSettings();
-        personalSettings.setGoalWeight(goalWeight);
-        personalSettings.setGoalDate(goalDate);
+
+        if(goalWeightField.getText().length() > 0){
+            float goalWeight = Float.parseFloat(String.valueOf(goalWeightField.getText()));
+            personalSettings.setGoalWeight(goalWeight);
+        }
+
+        if(goalDateField.getText().length() > 0){
+            int goalDate = Integer.parseInt(String.valueOf(goalDateField.getText()));
+            personalSettings.setGoalDate(goalDate);
+        }
+
+        if(heightInFeetField.getText().length() > 0){
+            int feet = Integer.parseInt(String.valueOf(heightInFeetField.getText()));
+            personalSettings.setHeightInFeet(feet);
+        }
+
+        if(heightInInchesField.getText().length() > 0){
+            int inches = Integer.parseInt(String.valueOf(heightInInchesField.getText()));
+            personalSettings.setHeightInInches(inches);
+        }
+
+        char gender = String.valueOf(genderFieldImage.getTag()).charAt(0);
         personalSettings.setGender(gender);
-        personalSettings.setHeightInFeet(feet);
-        personalSettings.setHeightInInches(inches);
 
         // insert the object into the database
         this._databaseManager.upsertPersonalSettings(personalSettings);
