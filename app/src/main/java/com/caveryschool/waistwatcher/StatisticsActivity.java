@@ -2,19 +2,29 @@ package com.caveryschool.waistwatcher;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
 
 import org.w3c.dom.Text;
 
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 public class StatisticsActivity extends AppCompatActivity {
     private DatabaseManager _databaseManager;
     private float _currentWeight;
     private float _previousWeight;
     private float _firstWeight;
+    private PersonalSettings _personalSettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +35,7 @@ public class StatisticsActivity extends AppCompatActivity {
 
     public void onStart(){
         super.onStart();
+        this._personalSettings = this._databaseManager.getPersonalSettings();
         setStatisticsFields();
     }
 
@@ -37,6 +48,63 @@ public class StatisticsActivity extends AppCompatActivity {
         setSinceLastWeight();
         // set since start field
         setSinceFirstWeight();
+        // set the days left field
+        setDaysLeft();
+        // set the above or below image and field
+        setDeltaGoal();
+    }
+
+    private void setDeltaGoal() {
+        // get the current weight
+        float currentWeight = this._currentWeight;
+
+        // get the goal weight
+        float goalWeight = this._personalSettings.getGoalWeight();
+
+        // find the difference
+        float difference = Math.abs(goalWeight - currentWeight);
+
+        // select the image based on a positive or negative difference
+        ImageView aboveOrBelow = this.findViewById(R.id.above_or_below_header);
+
+        if (currentWeight > goalWeight){
+            // set the image to above
+            // get the image view
+            aboveOrBelow.setImageDrawable(AppCompatResources.getDrawable(this, R.drawable.above_goal_header));
+        } else{
+            // set the image to below
+            aboveOrBelow.setImageDrawable(AppCompatResources.getDrawable(this, R.drawable.below_goal_header));
+        }
+
+        // set the int value in the field
+        TextView deltaField = this.findViewById(R.id.goal_delta_field);
+        deltaField.setText(String.valueOf(difference));
+    }
+
+    private void setDaysLeft() {
+        // get the current date
+        Calendar calendar = Calendar.getInstance(Locale.US);
+        Timestamp timestamp = new Timestamp(calendar.getTimeInMillis());
+        Date currentDate = new Date(timestamp.getTime());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String dateStamp = String.valueOf(timestamp.toString()).substring(0,10);
+
+
+        // get the goal date
+        int goalDateInt = this._personalSettings.getGoalDate();
+        String goalDateString = String.valueOf(goalDateInt);
+        int yearInt = Integer.parseInt(goalDateString.substring(0,4));
+        int monthInt = Integer.parseInt(goalDateString.substring(4,6));
+        int dayInt = Integer.parseInt(goalDateString.substring(6,8));
+        calendar.set(yearInt, monthInt - 1, dayInt);
+        Timestamp timestamp2 = new Timestamp(calendar.getTimeInMillis());
+        Date goalDate = new Date(timestamp2.getTime());
+        // find the difference in days between goal date and current date
+        long deltaDays = TimeUnit.DAYS.convert(goalDate.getTime() - currentDate.getTime(), TimeUnit.MILLISECONDS);
+
+        // set the field with the delta
+        TextView daysLeftField = findViewById(R.id.days_left_field);
+        daysLeftField.setText(String.valueOf(deltaDays));
     }
 
     private void setSinceFirstWeight() {
@@ -87,9 +155,8 @@ public class StatisticsActivity extends AppCompatActivity {
 
     private String calculateBMI() {
         // get height from the settings in the database
-        PersonalSettings personalSettings = this._databaseManager.getPersonalSettings();
-        int tempHeightInchValue = personalSettings.getHeightInInches();
-        int feet = personalSettings.getHeightInFeet();
+        int tempHeightInchValue = this._personalSettings.getHeightInInches();
+        int feet = this._personalSettings.getHeightInFeet();
         int heightInches = feet * 12 + tempHeightInchValue;
         // 703 X Weight in lbs / height in inches squared
         float calculatedBMI = (703 * this._currentWeight) / (heightInches * heightInches);

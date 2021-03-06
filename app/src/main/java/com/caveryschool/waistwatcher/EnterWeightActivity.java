@@ -62,7 +62,6 @@ public class EnterWeightActivity extends AppCompatActivity {
             Calendar calendar = Calendar.getInstance(Locale.US);
             Timestamp timestamp = new Timestamp(calendar.getTimeInMillis());
 
-            Date date = new Date();
             String dateStamp = String.valueOf(timestamp.toString()).substring(0,10).replace("-", "");
             String instantStamp = String.valueOf(timestamp.toString()).substring(11,19).replace(":","");
 
