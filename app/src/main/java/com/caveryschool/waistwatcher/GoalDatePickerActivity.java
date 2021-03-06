@@ -75,10 +75,16 @@ public class GoalDatePickerActivity extends AppCompatActivity {
         Bundle dataFromSettings = getIntent().getExtras();
  
         float weight = dataFromSettings.getFloat("weight");
-        
+        char gender = dataFromSettings.getChar("gender");
+        int heightInFeet = dataFromSettings.getChar("heightInFeet");
+        int heightInInches = dataFromSettings.getChar("heightInInches");
+
         Bundle returnBundle = new Bundle();
         returnBundle.putString("date", dateForBundle);
         returnBundle.putFloat("weight", weight);
+        returnBundle.putChar("gender", gender);
+        returnBundle.putInt("heightInFeet", heightInFeet);
+        returnBundle.putInt("heightInInches", heightInInches);
 
         // pass the data and start the new activity
         settingsActivity.putExtras(returnBundle);

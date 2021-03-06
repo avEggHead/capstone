@@ -86,10 +86,18 @@ public class SettingsActivity extends AppCompatActivity {
     private void setGenderIcon(PersonalSettings personalSettings) {
         ImageView view = this._layout.findViewById(R.id.gender_field);
 
-        if(personalSettings.getGender() == 'M'){
+        char gender = '0';
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null && !this._clearAll){
+            gender = bundle.getChar("gender");
+        }else{
+            gender = personalSettings.getGender();
+        }
+
+        if(gender == 'M'){
             view.setImageDrawable(AppCompatResources.getDrawable(this, R.drawable.gender_selection_male));
             view.setTag("M");
-        } else if(personalSettings.getGender() == 'F'){
+        } else if(gender == 'F'){
             view.setImageDrawable(AppCompatResources.getDrawable(this, R.drawable.gender_selection_female));
             view.setTag("F");
         }
@@ -169,7 +177,7 @@ public class SettingsActivity extends AppCompatActivity {
         EditText heightInInchesField = this._layout.findViewById(R.id.height_in_inches);
 
         currentSettingsBundle.putFloat("weight", Float.parseFloat(String.valueOf(goalWeightField.getText())));
-
+        currentSettingsBundle.putChar("gender", String.valueOf(genderFieldImage.getTag()).charAt(0));
         // pass the data and start the new activity
         goalDatePicker.putExtras(currentSettingsBundle);
 
