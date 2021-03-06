@@ -97,8 +97,8 @@
         android:onClick="decrementMonth"
         android:src="@drawable/arrow_left"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/month_heading"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.188"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/month_heading"
         app:layout_constraintVertical_bias="0.0" />

@@ -191,10 +191,14 @@ public class SettingsActivity extends AppCompatActivity {
         EditText heightInFeetField = this._layout.findViewById(R.id.height_in_feet);
         EditText heightInInchesField = this._layout.findViewById(R.id.height_in_inches);
 
-        currentSettingsBundle.putFloat("weight", Float.parseFloat(String.valueOf(goalWeightField.getText())));
+        String weight = (goalWeightField.getText().length() > 0) ? String.valueOf(goalWeightField.getText()) : "0";
+        String heightInFeet = (heightInFeetField.getText().length() > 0) ? String.valueOf(heightInFeetField.getText()) : "0";
+        String heightInInches = (heightInInchesField.getText().length() > 0) ? String.valueOf(heightInInchesField.getText()) : "0";
+
+        currentSettingsBundle.putFloat("weight", Float.parseFloat(weight));
         currentSettingsBundle.putChar("gender", String.valueOf(genderFieldImage.getTag()).charAt(0));
-        currentSettingsBundle.putInt("heightInFeet", Integer.parseInt(String.valueOf(heightInFeetField.getText())));
-        currentSettingsBundle.putInt("heightInInches", Integer.parseInt(String.valueOf(heightInInchesField.getText())));
+        currentSettingsBundle.putInt("heightInFeet", Integer.parseInt(heightInFeet));
+        currentSettingsBundle.putInt("heightInInches", Integer.parseInt(heightInInches));
         currentSettingsBundle.putInt("date", Integer.parseInt(String.valueOf(goalDateField.getText())));
         // pass the data and start the new activity
         goalDatePicker.putExtras(currentSettingsBundle);
