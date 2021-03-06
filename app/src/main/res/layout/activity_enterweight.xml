@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/enter_weight_heading"
-        android:layout_width="298dp"
-        android:layout_height="265dp"
+        android:layout_width="244dp"
+        android:layout_height="205dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/enter_weight_heading" />
 
@@ -69,13 +69,15 @@
         />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/cancel_button"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_below="@id/submit_button"
-        android:src="@drawable/camera_icon"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="-2dp"
+        android:layout_marginEnd="31dp"
+        android:layout_toRightOf="@id/cancel_button"
         android:onClick="takePicture"
-        />
+        android:src="@drawable/camera_icon" />
 
     <ImageView
         android:layout_width="wrap_content"

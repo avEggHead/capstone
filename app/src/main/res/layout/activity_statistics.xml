@@ -68,6 +68,83 @@
         app:layout_constraintTop_toBottomOf="@+id/bmi_header" />
 
     <ImageView
+        android:id="@+id/days_left_header"
+        android:layout_width="158dp"
+        android:layout_height="67dp"
+        android:layout_below="@id/current_weight_field"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/days_left_header"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.063"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.286" />
+
+    <ImageView
+        android:id="@+id/above_or_below_header"
+        android:layout_width="146dp"
+        android:layout_height="59dp"
+        android:layout_below="@id/current_weight_field"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/above_goal_header"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.867"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.251" />
+
+    <ImageView
+        android:id="@+id/goal_header"
+        android:layout_width="158dp"
+        android:layout_height="67dp"
+        android:layout_below="@id/current_weight_field"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/goal_header"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.936"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/above_or_below_header"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/days_remaining_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bmi_header"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/my_custom_font"
+        android:maxLength="4"
+        android:text="⇗10"
+        android:textColor="@color/teal_700"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/days_left_header" />
+
+    <TextView
+        android:id="@+id/goal_delta_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bmi_header"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/my_custom_font"
+        android:maxLength="4"
+        android:text="⇗10"
+        android:textColor="@color/teal_700"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.846"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goal_header" />
+
+    <ImageView
         android:id="@+id/since_last_weight"
         android:layout_width="159dp"
         android:layout_height="101dp"
