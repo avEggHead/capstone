@@ -47,13 +47,28 @@ public class SettingsActivity extends AppCompatActivity {
 
     private void setHeightInches(PersonalSettings personalSettings) {
         EditText heightInInchesField = this._layout.findViewById(R.id.height_in_inches);
-        String heightInInchesValue = String.valueOf(personalSettings.getHeightInInches());
+        String heightInInchesValue = "";
+
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null && !this._clearAll){
+            heightInInchesValue = String.valueOf(bundle.getInt("heightInInches"));
+        }else{
+            heightInInchesValue = String.valueOf(personalSettings.getHeightInInches());
+        }
         heightInInchesField.setText(heightInInchesValue);
     }
 
     private void setHeightFeet(PersonalSettings personalSettings) {
         EditText heightInFeetField = this._layout.findViewById(R.id.height_in_feet);
-        String heightInFeetValue = String.valueOf(personalSettings.getHeightInFeet());
+        String heightInFeetValue = "";
+
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null && !this._clearAll){
+            heightInFeetValue = String.valueOf(bundle.getInt("heightInFeet"));
+        }else{
+            heightInFeetValue = String.valueOf(personalSettings.getHeightInFeet());
+        }
+
         heightInFeetField.setText(heightInFeetValue);
     }
 
@@ -178,6 +193,9 @@ public class SettingsActivity extends AppCompatActivity {
 
         currentSettingsBundle.putFloat("weight", Float.parseFloat(String.valueOf(goalWeightField.getText())));
         currentSettingsBundle.putChar("gender", String.valueOf(genderFieldImage.getTag()).charAt(0));
+        currentSettingsBundle.putInt("heightInFeet", Integer.parseInt(String.valueOf(heightInFeetField.getText())));
+        currentSettingsBundle.putInt("heightInInches", Integer.parseInt(String.valueOf(heightInInchesField.getText())));
+        currentSettingsBundle.putInt("date", Integer.parseInt(String.valueOf(goalDateField.getText())));
         // pass the data and start the new activity
         goalDatePicker.putExtras(currentSettingsBundle);
 

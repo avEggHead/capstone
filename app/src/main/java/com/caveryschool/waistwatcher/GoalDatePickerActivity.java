@@ -76,8 +76,8 @@ public class GoalDatePickerActivity extends AppCompatActivity {
  
         float weight = dataFromSettings.getFloat("weight");
         char gender = dataFromSettings.getChar("gender");
-        int heightInFeet = dataFromSettings.getChar("heightInFeet");
-        int heightInInches = dataFromSettings.getChar("heightInInches");
+        int heightInFeet = dataFromSettings.getInt("heightInFeet");
+        int heightInInches = dataFromSettings.getInt("heightInInches");
 
         Bundle returnBundle = new Bundle();
         returnBundle.putString("date", dateForBundle);
@@ -93,6 +93,24 @@ public class GoalDatePickerActivity extends AppCompatActivity {
 
     public void goBack(View view){
         Intent settingsScreen = new Intent(this,SettingsActivity.class);
+
+        Bundle dataFromSettings = getIntent().getExtras();
+
+        float weight = dataFromSettings.getFloat("weight");
+        char gender = dataFromSettings.getChar("gender");
+        int dateForBundle = dataFromSettings.getInt("date");
+        int heightInFeet = dataFromSettings.getInt("heightInFeet");
+        int heightInInches = dataFromSettings.getInt("heightInInches");
+
+        Bundle returnBundle = new Bundle();
+        returnBundle.putString("date", String.valueOf(dateForBundle));
+        returnBundle.putFloat("weight", weight);
+        returnBundle.putChar("gender", gender);
+        returnBundle.putInt("heightInFeet", heightInFeet);
+        returnBundle.putInt("heightInInches", heightInInches);
+
+        // pass the data and start the new activity
+        settingsScreen.putExtras(returnBundle);
         this.startActivity(settingsScreen);
     }
 
