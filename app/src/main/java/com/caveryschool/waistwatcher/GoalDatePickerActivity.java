@@ -71,11 +71,17 @@ public class GoalDatePickerActivity extends AppCompatActivity {
         String dayString = (""+(100+dayInt)).substring(1);
         String dateForBundle = String.valueOf(yearInt) + monthString + dayString;
 
-        Bundle dateBundle = new Bundle();
-        dateBundle.putString("date", dateForBundle);
+
+        Bundle dataFromSettings = getIntent().getExtras();
+ 
+        float weight = dataFromSettings.getFloat("weight");
+        
+        Bundle returnBundle = new Bundle();
+        returnBundle.putString("date", dateForBundle);
+        returnBundle.putFloat("weight", weight);
 
         // pass the data and start the new activity
-        settingsActivity.putExtras(dateBundle);
+        settingsActivity.putExtras(returnBundle);
         this.startActivity(settingsActivity);
     }
 

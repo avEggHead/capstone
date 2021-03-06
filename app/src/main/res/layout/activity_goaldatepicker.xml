@@ -29,7 +29,7 @@
         app:layout_constraintHorizontal_bias="0.811"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.124" />
+        app:layout_constraintVertical_bias="0.026" />
 
     <ImageView
         android:id="@+id/year_arrow_left"
@@ -42,7 +42,7 @@
         app:layout_constraintHorizontal_bias="0.188"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.124" />
+        app:layout_constraintVertical_bias="0.024" />
 
     <TextView
         android:id="@+id/year_value"
@@ -61,6 +61,7 @@
         app:layout_constraintTop_toBottomOf="@+id/year_heading"
         app:layout_constraintVertical_bias="0.034" />
 
+
     <ImageView
         android:id="@+id/month_heading"
         android:layout_width="173dp"
@@ -70,35 +71,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/year_value"
-        app:layout_constraintVertical_bias="0.028" />
-
-    <ImageView
-        android:id="@+id/month_arrow_right"
-        android:layout_width="51dp"
-        android:layout_height="wrap_content"
-        android:onClick="incrementMonth"
-        android:src="@drawable/arrow_right"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.811"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.365" />
-
-    <ImageView
-        android:id="@+id/month_arrow_left"
-        android:layout_width="51dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:onClick="decrementMonth"
-        android:src="@drawable/arrow_left"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/month_heading"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/month_heading"
-        app:layout_constraintVertical_bias="0.13" />
-
+        app:layout_constraintVertical_bias="0.082" />
 
     <TextView
         android:id="@+id/month_value"
@@ -113,10 +86,35 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/month_arrow_right"
-        app:layout_constraintHorizontal_bias="0.634"
         app:layout_constraintStart_toEndOf="@+id/month_arrow_left"
         app:layout_constraintTop_toBottomOf="@+id/month_heading"
-        app:layout_constraintVertical_bias="0.051" />
+        app:layout_constraintVertical_bias="0.034" />
+
+    <ImageView
+        android:id="@+id/month_arrow_left"
+        android:layout_width="51dp"
+        android:layout_height="wrap_content"
+        android:onClick="decrementMonth"
+        android:src="@drawable/arrow_left"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/month_heading"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/month_heading"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/month_arrow_right"
+        android:layout_width="51dp"
+        android:layout_height="wrap_content"
+        android:onClick="incrementMonth"
+        android:src="@drawable/arrow_right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.811"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/month_heading"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/day_heading"
@@ -127,7 +125,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/month_value"
-        app:layout_constraintVertical_bias="0.042" />
+        app:layout_constraintVertical_bias="0.156" />
+
+    <ImageView
+        android:id="@+id/day_arrow_left"
+        android:layout_width="51dp"
+        android:layout_height="wrap_content"
+        android:onClick="decrementDay"
+        android:src="@drawable/arrow_left"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/day_value"
+        app:layout_constraintHorizontal_bias="0.548"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/day_heading"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/day_arrow_right"
+        android:layout_width="51dp"
+        android:layout_height="wrap_content"
+        android:onClick="incrementDay"
+        android:src="@drawable/arrow_right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.451"
+        app:layout_constraintStart_toEndOf="@+id/day_value"
+        app:layout_constraintTop_toTopOf="@+id/day_heading"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/day_value"
@@ -144,33 +168,7 @@
         app:layout_constraintEnd_toEndOf="@+id/day_heading"
         app:layout_constraintStart_toStartOf="@+id/day_heading"
         app:layout_constraintTop_toBottomOf="@+id/day_heading"
-        app:layout_constraintVertical_bias="0.059" />
-
-    <ImageView
-        android:id="@+id/day_arrow_right"
-        android:layout_width="51dp"
-        android:layout_height="wrap_content"
-        android:onClick="incrementDay"
-        android:src="@drawable/arrow_right"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.451"
-        app:layout_constraintStart_toEndOf="@+id/day_value"
-        app:layout_constraintTop_toBottomOf="@+id/month_arrow_right"
-        app:layout_constraintVertical_bias="0.161" />
-
-    <ImageView
-        android:id="@+id/day_arrow_left"
-        android:layout_width="51dp"
-        android:layout_height="wrap_content"
-        android:onClick="decrementDay"
-        android:src="@drawable/arrow_left"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/day_value"
-        app:layout_constraintHorizontal_bias="0.548"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/month_arrow_left"
-        app:layout_constraintVertical_bias="0.194" />
+        app:layout_constraintVertical_bias="0.055" />
 
     <ImageView
         android:id="@+id/submit_button"
@@ -179,26 +177,12 @@
         android:layout_centerHorizontal="true"
         android:onClick="submitDate"
         android:src="@drawable/submit_button"
-        app:layout_constraintBottom_toTopOf="@+id/cancel_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.523"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.973" />
-
-    <ImageView
-        android:id="@+id/cancel_button"
-        android:layout_width="104dp"
-        android:layout_height="64dp"
-        android:layout_below="@id/submit_button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="32dp"
-        android:onClick="clearAll"
-        android:src="@drawable/cancel_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.537"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.931" />
 
     <ImageView
         android:layout_width="57dp"

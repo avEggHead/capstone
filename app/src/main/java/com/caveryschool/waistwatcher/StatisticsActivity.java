@@ -82,6 +82,9 @@ public class StatisticsActivity extends AppCompatActivity {
     }
 
     private void setDaysLeft() {
+
+        TextView daysLeftField = findViewById(R.id.days_left_field);
+
         // get the current date
         Calendar calendar = Calendar.getInstance(Locale.US);
         Timestamp timestamp = new Timestamp(calendar.getTimeInMillis());
@@ -89,22 +92,21 @@ public class StatisticsActivity extends AppCompatActivity {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String dateStamp = String.valueOf(timestamp.toString()).substring(0,10);
 
-
         // get the goal date
         int goalDateInt = this._personalSettings.getGoalDate();
         String goalDateString = String.valueOf(goalDateInt);
-        int yearInt = Integer.parseInt(goalDateString.substring(0,4));
-        int monthInt = Integer.parseInt(goalDateString.substring(4,6));
-        int dayInt = Integer.parseInt(goalDateString.substring(6,8));
-        calendar.set(yearInt, monthInt - 1, dayInt);
-        Timestamp timestamp2 = new Timestamp(calendar.getTimeInMillis());
-        Date goalDate = new Date(timestamp2.getTime());
-        // find the difference in days between goal date and current date
-        long deltaDays = TimeUnit.DAYS.convert(goalDate.getTime() - currentDate.getTime(), TimeUnit.MILLISECONDS);
-
-        // set the field with the delta
-        TextView daysLeftField = findViewById(R.id.days_left_field);
-        daysLeftField.setText(String.valueOf(deltaDays));
+        if(goalDateInt > 0){
+            int yearInt = Integer.parseInt(goalDateString.substring(0,4));
+            int monthInt = Integer.parseInt(goalDateString.substring(4,6));
+            int dayInt = Integer.parseInt(goalDateString.substring(6,8));
+            calendar.set(yearInt, monthInt - 1, dayInt);
+            Timestamp timestamp2 = new Timestamp(calendar.getTimeInMillis());
+            Date goalDate = new Date(timestamp2.getTime());
+            // find the difference in days between goal date and current date
+            long deltaDays = TimeUnit.DAYS.convert(goalDate.getTime() - currentDate.getTime(), TimeUnit.MILLISECONDS);
+            // set the field with the delta
+            daysLeftField.setText(String.valueOf(deltaDays));
+        }
     }
 
     private void setSinceFirstWeight() {
@@ -159,11 +161,12 @@ public class StatisticsActivity extends AppCompatActivity {
         int feet = this._personalSettings.getHeightInFeet();
         int heightInches = feet * 12 + tempHeightInchValue;
         // 703 X Weight in lbs / height in inches squared
-        float calculatedBMI = (703 * this._currentWeight) / (heightInches * heightInches);
-        // get height
-
-
-        return String.valueOf(calculatedBMI);
+        if(heightInches != 0){
+            float calculatedBMI = (703 * this._currentWeight) / (heightInches * heightInches);
+            // get height
+            return String.valueOf(calculatedBMI);
+        }
+        return "0";
     }
 
     private void setCurrentWeightField() {

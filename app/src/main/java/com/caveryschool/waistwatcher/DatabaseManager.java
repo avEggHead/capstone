@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DatabaseManager extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "WeightTracker";
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 6;
     private static final String TABLE_WEIGHTS = "weights";
     private static final String ID = "id";
     private static final String WEIGHT = "weight";
@@ -120,10 +120,10 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     private void setDefaults(PersonalSettings personalSettings) {
         personalSettings.setGender('F');
-        personalSettings.setGoalDate(20220101);
-        personalSettings.setGoalWeight((float)185.00);
-        personalSettings.setHeightInFeet(5);
-        personalSettings.setHeightInInches(9);
+        personalSettings.setGoalDate(0);
+        personalSettings.setGoalWeight((float)0);
+        personalSettings.setHeightInFeet(0);
+        personalSettings.setHeightInInches(0);
     }
 
     public void upsertPersonalSettings(PersonalSettings newSettings) {

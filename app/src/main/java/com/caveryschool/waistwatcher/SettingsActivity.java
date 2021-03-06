@@ -17,7 +17,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 public class SettingsActivity extends AppCompatActivity {
     private DatabaseManager _databaseManager;
     private ConstraintLayout _layout;
-
+    private boolean _clearAll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +62,7 @@ public class SettingsActivity extends AppCompatActivity {
         TextView goalDate = this._layout.findViewById(R.id.input_goal_date);
         String date = "";
         Bundle bundle = getIntent().getExtras();
-        if(bundle != null){
+        if(bundle != null && !this._clearAll){
             date = bundle.getString("date");
         }else{
             date = String.valueOf(personalSettings.getGoalDate());
@@ -72,7 +72,15 @@ public class SettingsActivity extends AppCompatActivity {
 
     private void setGoalWeight(PersonalSettings personalSettings) {
         EditText goalWeight = this._layout.findViewById(R.id.input_goal_weight);
-        goalWeight.setText(String.valueOf(personalSettings.getGoalWeight()));
+
+        String weight = "";
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null && !this._clearAll){
+            weight = String.valueOf(bundle.getFloat("weight"));
+        }else{
+            weight = String.valueOf(personalSettings.getGoalWeight());
+        }
+        goalWeight.setText(weight);
     }
 
     private void setGenderIcon(PersonalSettings personalSettings) {
@@ -107,6 +115,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void clearAll(View view){
+        this._clearAll = true;
         setPersonalSettings();
     }
 
@@ -151,6 +160,19 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void goToDatePicker(View view) {
         Intent goalDatePicker = new Intent(this,GoalDatePickerActivity.class);
+
+        Bundle currentSettingsBundle = new Bundle();
+        EditText goalWeightField = this._layout.findViewById(R.id.input_goal_weight);
+        TextView goalDateField = this._layout.findViewById(R.id.input_goal_date);
+        ImageView genderFieldImage = this._layout.findViewById(R.id.gender_field);
+        EditText heightInFeetField = this._layout.findViewById(R.id.height_in_feet);
+        EditText heightInInchesField = this._layout.findViewById(R.id.height_in_inches);
+
+        currentSettingsBundle.putFloat("weight", Float.parseFloat(String.valueOf(goalWeightField.getText())));
+
+        // pass the data and start the new activity
+        goalDatePicker.putExtras(currentSettingsBundle);
+
         this.startActivity(goalDatePicker);
     }
 }
